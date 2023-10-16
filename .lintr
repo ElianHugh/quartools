@@ -1,0 +1,9 @@
+linters: with_defaults(
+  line_length_linter(120),
+  implicit_integer_linter(),
+  indentation_linter(indent = 4L),
+  object_usage_linter = NULL,
+  object_name_linter = NULL
+  )
+exclusions: list("man/", "inst/", "src/", ".vscode/", ".Rproj.user/")
+encoding: "UTF-8"

@@ -1,0 +1,81 @@
+---
+title: \{quartools\}
+subtitle: Programmatic quarto element creation
+format: html
+embed-resources: true
+toc: true
+toc-location: left
+---
+
+```{r}
+#| echo: false
+#| output: false
+devtools::load_all()
+```
+
+# Introduction
+
+`r div("{_quartools_} allows for the creation of quarto markdown via R.")` Much of this page has been generated with the package for reference. The following is a list of what markdown you can generate using the package.
+
+| Element | Function        | Example                                |
+|---------|-----------------|----------------------------------------|
+| div     | div(..., attr)  | div("a note.", attr = ".callout-note") |
+| span    | span(..., attr) | span("hello!", attr = ".bold")         |
+
+# Background
+
+At work, I ran into an issue where I was generating hundreds of parameterised reports that would be similar with subtle differences in content. I found myself leaning on R for programmatic markup creation, which meant that I could have one master document that I worked on. My prototype version (read: functions I threw together for work) required a lot of constant chunk configuration, and wasn't particularly user-friendly. {_quartools_} is a more streamlined version of what I was using at work, with the added benefit of it requiring little to no setup on the end user's part.
+
+# Basics
+
+Quarto uses `:::` markup for defining a div. _quartools_ analagously creates divs using the `div()` function. The following shows a comparison of how to define a simple div in quarto and in _quartools_.
+
+```{r}
+#| code-fold: true
+div(
+    "## quarto",
+    "```markdown",
+    ":::{.my-class}",
+    "Hello world!",
+    ":::",
+    "```",
+    "## quartools",
+    "```r",
+    "div('Hello world!', attr = '.my-class')",
+    "```",
+    attr = ".panel-tabset"
+)
+```
+
+Note that the output of the _quartools_ example when it is evaluated _is_ the quarto example. The reason that this markup generation is powerful is because we can leverage R for decision-making -- this will be talked about later on.
+
+# Examples
+
+:::{.callout-note collapse="true"}
+Whilst calling `div` (or any other markdown-generating function from quartools) will generate valid markdown that doesn't need any YAMl to change how it is printed, due to how `knitr` works, using `lapply` or other loop methods will require using `quartools::as_markdown`. See [this discussion on the knitr page](https://github.com/yihui/knitr/issues/1137) for more information on why this is necessary.
+:::
+
+I want to create a flexbox with a varying number of elements based on a list I define in R. We can use the `quartools::mdapply` function to generate markdown by iterating over a list with the `div` function.
+
+```{css}
+.flexbox {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.flexbox > * {
+    padding: 5px;
+    margin: 5px;
+    width: 150px;
+    height: 50px;
+    background-color: grey;
+    color: white;
+    border: 1px solid black;
+}
+```
+
+```{r}
+list("A", "B", "C") |>
+    mdapply(div) |>
+    div(attr = ".flexbox")
+```
