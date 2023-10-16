@@ -9,3 +9,8 @@ span(..., attr = NULL)
 \description{
 todo
 }
+\seealso{
+Other elements: 
+\code{\link{div}()}
+}
+\concept{elements}

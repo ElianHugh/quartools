@@ -1,7 +1,10 @@
+#' @importFrom rlang %||%
+NULL
+
 #' Create a quarto div element
 #' @description todo
-#' @importFrom rlang %||%
 #' @export
+#' @family elements
 div <- function(..., attr = NULL) {
     out <- "\n\n:::{%s}\n\n%s\n\n:::\n"
 
@@ -20,6 +23,7 @@ div <- function(..., attr = NULL) {
 #' Create a quarto span element
 #' @description todo
 #' @export
+#' @family elements
 span <- function(..., attr = NULL) {
     out <- "[%s]{%s}"
 

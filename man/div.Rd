@@ -9,3 +9,8 @@ div(..., attr = NULL)
 \description{
 todo
 }
+\seealso{
+Other elements: 
+\code{\link{span}()}
+}
+\concept{elements}
