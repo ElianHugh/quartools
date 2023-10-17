@@ -13,14 +13,19 @@ mdapply(x, fun, ...)
 
 \item{...}{optional arguments to fun}
 }
+\value{
+character vector of length 1
+}
 \description{
 Generate markdown by applying a function to a list of elements.
 The function is expected to return valid markdown content.
+The final result will be converted via \link{as_markdown} to a valid
+markdown chunk.
 }
 \examples{
 my_list <- list("A", "B", "C")
 mdapply(my_list, div)
 }
 \seealso{
-\link[base:lapply]{base::lapply}
+\link[base:lapply]{base::lapply} \link{as_markdown}
 }

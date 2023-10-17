@@ -7,6 +7,7 @@
 #' @export
 #' @family page layout functions
 with_body_column <- function(..., outset = FALSE, extension = NULL) {
+    check_extension_arg(extension, c("left", "right"))
     cls <- ".column-body%s%s"
     div(
         ...,
@@ -27,6 +28,7 @@ with_body_column <- function(..., outset = FALSE, extension = NULL) {
 #' @export
 #' @family page layout functions
 with_page_column <- function(..., extension = NULL) {
+    check_extension_arg(extension, c("left", "right"))
     cls <- ".column-page%s"
     div(
         ...,
@@ -46,6 +48,7 @@ with_page_column <- function(..., extension = NULL) {
 #' @export
 #' @family page layout functions
 with_screen_inset_column <- function(..., extension = NULL) {
+    check_extension_arg(extension, c("left", "right", "shaded"))
     cls <- ".column-screen-inset%s"
     div(
         ...,
@@ -65,6 +68,7 @@ with_screen_inset_column <- function(..., extension = NULL) {
 #' @export
 #' @family page layout functions
 with_screen_column <- function(..., extension = NULL) {
+    check_extension_arg(extension, c("left", "right"))
     cls <- ".column-screen%s"
     div(
         ...,
