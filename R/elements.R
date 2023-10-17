@@ -13,13 +13,13 @@
 #' @family elements
 #' @export
 div <- function(..., attr = NULL) {
-    out <- "\n\n:::{%s}\n\n%s\n\n:::\n"
+    rlang::check_dots_unnamed()
 
+    out <- "\n\n:::{%s}\n\n%s\n\n:::\n"
     args <- rlang::dots_list(...)
     attr <- attr %||% "" |>
         paste0(collapse = " ")
     content <- args |>
-        unname() |>
         paste0(collapse = "\n\n")
 
     structure(
@@ -43,13 +43,13 @@ div <- function(..., attr = NULL) {
 #' @family elements
 #' @export
 span <- function(..., attr = NULL) {
-    out <- "[%s]{%s}"
+    rlang::check_dots_unnamed()
 
+    out <- "[%s]{%s}"
     args <- rlang::dots_list(...)
     attr <- attr %||% "" |>
         paste0(collapse = " ")
     content <- args |>
-        unname() |>
         paste0(collapse = " ")
 
     structure(

@@ -4,14 +4,10 @@
 \name{quartools-package}
 \alias{quartools}
 \alias{quartools-package}
-\title{quartools: programmatic element creation}
+\title{quartools: Programmatic Element Creation For Quarto Documents}
 \description{
-This package allows for the creation of quarto markdown via R function calls.
+What the package does (one paragraph).
 }
-\section{todo}{
-NA
-}
-
 \author{
 \strong{Maintainer}: Elian Thiele-Evans \email{elianhte@gmail.com} (\href{https://orcid.org/0000-0001-8008-3165}{ORCID})
 

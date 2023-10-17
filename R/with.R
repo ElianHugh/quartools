@@ -1,11 +1,16 @@
-#' TODO
+#' Temporarily modify page layout
 #' @description
-#' TODO
-#' @param ... todo
-#' @param outset todo
-#' @param extension todo
+#' Create a div block that modifies the current quarto layout column temporarily.
+#'
+#' See [the Quarto documentation for a full list
+#' of available extension options](https://quarto.org/docs/authoring/article-layout.html#available-columns).
+#' @param ... arguments to pass to [quartools::div]
+#' @param outset should the outset affix be applied to the column class?
+#' @param extension affix class to apply to column class
 #' @export
-#' @family page layout functions
+#' @examples
+#' with_body_column("Hello world!")
+#' @rdname page-layout
 with_body_column <- function(..., outset = FALSE, extension = NULL) {
     check_extension_arg(extension, c("left", "right"))
     cls <- ".column-body%s%s"
@@ -19,14 +24,8 @@ with_body_column <- function(..., outset = FALSE, extension = NULL) {
     )
 }
 
-#' TODO
-#' @description
-#' TODO
-#' @param ... todo
-#' @param outset todo
-#' @param extension todo
 #' @export
-#' @family page layout functions
+#' @rdname page-layout
 with_page_column <- function(..., extension = NULL) {
     check_extension_arg(extension, c("left", "right"))
     cls <- ".column-page%s"
@@ -39,14 +38,8 @@ with_page_column <- function(..., extension = NULL) {
     )
 }
 
-#' TODO
-#' @description
-#' TODO
-#' @param ... todo
-#' @param outset todo
-#' @param extension todo
 #' @export
-#' @family page layout functions
+#' @rdname page-layout
 with_screen_inset_column <- function(..., extension = NULL) {
     check_extension_arg(extension, c("left", "right", "shaded"))
     cls <- ".column-screen-inset%s"
@@ -59,14 +52,8 @@ with_screen_inset_column <- function(..., extension = NULL) {
     )
 }
 
-#' TODO
-#' @description
-#' TODO
-#' @param ... todo
-#' @param outset todo
-#' @param extension todo
 #' @export
-#' @family page layout functions
+#' @rdname page-layout
 with_screen_column <- function(..., extension = NULL) {
     check_extension_arg(extension, c("left", "right"))
     cls <- ".column-screen%s"
@@ -79,12 +66,8 @@ with_screen_column <- function(..., extension = NULL) {
     )
 }
 
-#' TODO
-#' @description
-#' TODO
-#' @param ... todo
 #' @export
-#' @family page layout functions
+#' @rdname page-layout
 with_margin_column <- function(...) {
     div(..., attr = ".column-margin")
 }
