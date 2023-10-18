@@ -1,6 +1,7 @@
 ^quartools\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
-^README\.Rmd$
+^README\.qmd$
 ^LICENSE\.md$
 ^\.lintr$
+^codecov\.yml$

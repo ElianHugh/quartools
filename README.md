@@ -7,6 +7,8 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Codecov test
+coverage](https://codecov.io/gh/ElianHugh/quartools/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ElianHugh/quartools?branch=main)
 <!-- badges: end -->
 
 *quartools* allows for the creation of quarto-compliant markdown via R
@@ -44,31 +46,36 @@ devtools::install_github("ElianHugh/quartools")
 
 ### My First Div
 
-The simplest way to create a div block element with quartools is via the
-`div` function. Note that the chunk configuration of `results: asis` is
-not necessary.
-
 ``` r
 library(quartools)
-div("Hello world!")
+div(
+    "The simplest way to create a div block element with quartools is via the `div` function.",
+    "Note that the chunk configuration of `results: asis` is not necessary."
+)
 ```
 
 <div>
 
-Hello world!
+The simplest way to create a div block element with quartools is via the
+`div` function.
+
+Note that the chunk configuration of `results: asis` is not necessary.
 
 </div>
 
-It is also possible to supply attributes to the div block element via
-the `attr` parameter (the callout will not work on GitHub):
-
 ``` r
-div("I'm a tip!", attr = ".callout-tip")
+div(
+    "It is also possible to supply attributes to the div block element via the `attr` parameter.",
+    attr = ".callout-tip"
+)
 ```
 
-<div class="callout-tip">
+<div>
 
-I’m a tip!
+> **Tip**
+>
+> It is also possible to supply attributes to the div block element via
+> the `attr` parameter.
 
 </div>
 
