@@ -7,19 +7,19 @@
 span(..., attr = NULL)
 }
 \arguments{
-\item{...}{todoc}
+\item{...}{unnamed values that can be coerced to character vectors}
 
-\item{attr}{todoc}
+\item{attr}{values that can be coerced to character vectors}
 }
 \value{
 character vector of length 1
 }
 \description{
 Create a span element with optional attributes to assign to it. Dots
-is collapsed into a single character vector with a space between each element.
+are collapsed into a single character vector with a space between each element.
 
-If attr is a vector with a length > 1,
-attributes will be combined into a single character vector via \link[base:paste]{base::paste0}.
+If attr is a vector with a length > 1, attributes will be combined into a single
+character vector via \link[base:paste]{base::paste0}.
 }
 \examples{
 span("Hello world!", attr = ".bold")

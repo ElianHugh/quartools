@@ -7,22 +7,29 @@
 div(..., attr = NULL)
 }
 \arguments{
-\item{...}{todoc}
+\item{...}{unnamed values that can be coerced to character vectors}
 
-\item{attr}{todoc}
+\item{attr}{values that can be coerced to character vectors}
 }
 \value{
 character vector of length 1
 }
 \description{
 Create a div block element with optional attributes to assign to it. Dots
-is collapsed into a single character vector with a newline between each element.
+are collapsed into a single character vector with a newline between each element.
 
-If attr is a vector with a length > 1,
-attributes will be combined into a single character vector via \link[base:paste]{base::paste0}.
+If attr is a vector with a length > 1, attributes will be combined into a
+single character vector via \link[base:paste]{base::paste0}.
 }
 \examples{
+# Create a quarto tip callout
 div("Hello world!", attr = ".callout-tip")
+
+# div calls can be nested
+div(
+ div("Hello world!"),
+ attr = ".my_class"
+)
 }
 \seealso{
 Other elements: 

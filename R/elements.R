@@ -1,14 +1,21 @@
 #' Create a quarto div element
 #' @description
 #' Create a div block element with optional attributes to assign to it. Dots
-#' is collapsed into a single character vector with a newline between each element.
+#' are collapsed into a single character vector with a newline between each element.
 #'
-#' If attr is a vector with a length > 1,
-#' attributes will be combined into a single character vector via [base::paste0].
-#' @param ... todoc
-#' @param attr todoc
+#' If attr is a vector with a length > 1, attributes will be combined into a
+#' single character vector via [base::paste0].
+#' @param ... unnamed values that can be coerced to character vectors
+#' @param attr values that can be coerced to character vectors
 #' @examples
+#' # Create a quarto tip callout
 #' div("Hello world!", attr = ".callout-tip")
+#'
+#' # div calls can be nested
+#' div(
+#'  div("Hello world!"),
+#'  attr = ".my_class"
+#' )
 #' @return character vector of length 1
 #' @family elements
 #' @export
@@ -24,19 +31,18 @@ div <- function(..., attr = NULL) {
 
     structure(
         sprintf(out, attr, content),
-        class = "knit_asis"
+        class = c("quartools_el", "knit_asis")
     )
 }
 
 #' Create a quarto span element
 #' @description
 #' Create a span element with optional attributes to assign to it. Dots
-#' is collapsed into a single character vector with a space between each element.
+#' are collapsed into a single character vector with a space between each element.
 #'
-#' If attr is a vector with a length > 1,
-#' attributes will be combined into a single character vector via [base::paste0].
-#' @param ... todoc
-#' @param attr todoc
+#' If attr is a vector with a length > 1, attributes will be combined into a single
+#'  character vector via [base::paste0].
+#' @inheritParams div
 #' @examples
 #' span("Hello world!", attr = ".bold")
 #' @return character vector of length 1
@@ -57,4 +63,3 @@ span <- function(..., attr = NULL) {
         class = "knit_asis"
     )
 }
-

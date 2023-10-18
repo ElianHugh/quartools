@@ -18,7 +18,9 @@ character vector of length 1
 }
 \description{
 Generate markdown by applying a function to a list of elements.
-The function is expected to return valid markdown content.
+The function is expected to return an object that can be coerced to a character
+vector.
+
 The final result will be converted via \link{as_markdown} to a valid
 markdown chunk.
 }

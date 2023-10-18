@@ -9,12 +9,14 @@ as_markdown(x, collapse = "")
 \arguments{
 \item{x}{object to convert to character vector}
 
-\item{collapse}{arg passed to \link[base:paste]{base::paste0}}
+\item{collapse}{an optional character string to separate the results.  Not
+    \code{\link[base]{NA_character_}}.}
 }
 \value{
 character vector of length 1
 }
 \description{
-Given x, collapse each element of x so that a character vector
-of length 1 is returned, and order knitr to render the result "asis".
+This is a wrapper around \link[base:paste]{base::paste0} which sets the class of the resulting
+character vector to "knit_asis". This means that the \link[knitr:knitr-package]{knitr::knitr} engine will render
+the character vector as markdown content, rather than as an R value.
 }

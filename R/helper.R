@@ -1,9 +1,10 @@
 #' Convert to markdown chunk
 #' @description
-#' Given x, collapse each element of x so that a character vector
-#' of length 1 is returned, and order knitr to render the result "asis".
+#' This is a wrapper around [base::paste0] which sets the class of the resulting
+#' character vector to "knit_asis". This means that the [knitr::knitr] engine will render
+#' the character vector as markdown content, rather than as an R value.
 #' @param x object to convert to character vector
-#' @param collapse arg passed to [base::paste0]
+#' @inheritParams base::paste0
 #' @return character vector of length 1
 #' @export
 as_markdown <- function(x, collapse = "") {
@@ -16,7 +17,9 @@ as_markdown <- function(x, collapse = "") {
 #' Markdown Apply
 #' @description
 #' Generate markdown by applying a function to a list of elements.
-#' The function is expected to return valid markdown content.
+#' The function is expected to return an object that can be coerced to a character
+#' vector.
+#'
 #' The final result will be converted via [quartools::as_markdown] to a valid
 #' markdown chunk.
 #' @param x a vector, expression, or any object coercible to a list
