@@ -31,7 +31,7 @@ div <- function(..., attr = NULL) {
 
     structure(
         sprintf(out, attr, content),
-        class = c("quartools_el", "knit_asis")
+        class = "knit_asis"
     )
 }
 

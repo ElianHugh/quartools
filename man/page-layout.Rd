@@ -8,18 +8,20 @@
 \alias{with_margin_column}
 \title{Temporarily modify page layout}
 \usage{
-with_body_column(..., outset = FALSE, extension = NULL)
+with_body_column(..., attr = NULL, outset = FALSE, extension = NULL)
 
-with_page_column(..., extension = NULL)
+with_page_column(..., attr = NULL, extension = NULL)
 
-with_screen_inset_column(..., extension = NULL)
+with_screen_inset_column(..., attr = NULL, extension = NULL)
 
-with_screen_column(..., extension = NULL)
+with_screen_column(..., attr = NULL, extension = NULL)
 
-with_margin_column(...)
+with_margin_column(..., attr = NULL)
 }
 \arguments{
-\item{...}{arguments to pass to \link{div}}
+\item{...}{unnamed values that can be coerced to character vectors}
+
+\item{attr}{values that can be coerced to character vectors}
 
 \item{outset}{should the outset affix be applied to the column class?}
 
