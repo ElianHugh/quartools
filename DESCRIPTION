@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R:
     person("Elian", "Thiele-Evans", , "elianhte@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8008-3165"))
-Description: Generate quarto-compliant markdown elements programatically.
+Description: Programatically generate quarto-compliant markdown elements.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -14,3 +14,5 @@ Imports:
 Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+URL: https://github.com/ElianHugh/quartools
+BugReports: https://github.com/ElianHugh/quartools/issues

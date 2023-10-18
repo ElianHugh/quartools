@@ -4,14 +4,36 @@
 # quartools
 
 <!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-The goal of quartools is to …
+*quartools* allows for the creation of quarto-compliant markdown via R
+function calls. As *quartools* generates quarto-compliant markdown, and
+*not* HTML tags, the content will work on any quarto output format.
+
+## Why quartools?
+
+At work, I ran into an issue where I was generating hundreds of
+parameterised reports that would be similar with subtle differences in
+content. I found myself leaning on R for programmatic markup creation,
+which meant that I could have one master document that I worked on. My
+prototype version (in other words, functions I threw together for work)
+required a lot of constant chunk configuration, and wasn’t particularly
+user-friendly nor elegant. *quartools* is a more streamlined version of
+my prototype, with the added benefit of it requiring little to no setup
+on the end user’s part.
 
 ## Installation
 
-You can install the development version of quartools from
-[GitHub](https://github.com/) with:
+### Release build
+
+``` r
+install.packages('quartools', repos = 'https://elianhugh.r-universe.dev')
+```
+
+### Development build
 
 ``` r
 # install.packages("devtools")
@@ -20,33 +42,64 @@ devtools::install_github("ElianHugh/quartools")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+### My First Div
+
+The simplest way to create a div block element with quartools is via the
+`div` function. Note that the chunk configuration of `results: asis` is
+not necessary.
 
 ``` r
 library(quartools)
-## basic example code
+div("Hello world!")
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+<div>
+
+Hello world!
+
+</div>
+
+It is also possible to supply attributes to the div block element via
+the `attr` parameter (the callout will not work on GitHub):
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+div("I'm a tip!", attr = ".callout-tip")
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
+<div class="callout-tip">
 
-You can also embed plots, for example:
+I’m a tip!
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+</div>
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+### Apply
+
+We can leverage the `apply` family of functions ability to loop over
+list elements to simplify creating many divs at once. Normally this
+would require a workaround to allow for printing directly as markdown
+content, but *quartools* exports the `mdapply` function (read: “markdown
+apply”) which allows for directly printing the result as valid markdown
+content.
+
+``` r
+my_favourite_letters <- letters[1L:3L]
+mdapply(my_favourite_letters, div)
+```
+
+<div>
+
+a
+
+</div>
+
+<div>
+
+b
+
+</div>
+
+<div>
+
+c
+
+</div>

@@ -6,7 +6,15 @@
 \alias{quartools-package}
 \title{quartools: Programmatic Element Creation For Quarto Documents}
 \description{
-Generate quarto-compliant markdown elements programatically.
+Programatically generate quarto-compliant markdown elements.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/ElianHugh/quartools}
+  \item Report bugs at \url{https://github.com/ElianHugh/quartools/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Elian Thiele-Evans \email{elianhte@gmail.com} (\href{https://orcid.org/0000-0001-8008-3165}{ORCID})
