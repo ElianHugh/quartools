@@ -20,3 +20,6 @@ This is a wrapper around \link[base:paste]{base::paste0} which sets the class of
 character vector to "knit_asis". This means that the \link[knitr:knitr-package]{knitr::knitr} engine will render
 the character vector as markdown content, rather than as an R value.
 }
+\examples{
+as_markdown(c("Hello world!"))
+}

@@ -10,6 +10,7 @@
 #' @export
 #' @examples
 #' with_body_column("Hello world!")
+#' @return character vector of length 1
 #' @rdname page-layout
 with_body_column <- function(..., attr = NULL, outset = FALSE, extension = NULL) {
     check_extension_arg(extension, c("left", "right"))

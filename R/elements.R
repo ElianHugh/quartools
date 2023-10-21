@@ -1,10 +1,11 @@
 #' Create a quarto div element
 #' @description
 #' Create a div block element with optional attributes to assign to it. Dots
-#' are collapsed into a single character vector with a newline between each element.
+#' are collapsed into a single character vector with a newline between each
+#' element.
 #'
-#' If attr is a vector with a length > 1, attributes will be combined into a
-#' single character vector via [base::paste0].
+#' If attr is a vector with a length > 1, attributes will be combined into
+#' a single character vector via [base::paste0].
 #' @param ... unnamed values that can be coerced to character vectors
 #' @param attr values that can be coerced to character vectors
 #' @examples
@@ -22,15 +23,13 @@
 div <- function(..., attr = NULL) {
     rlang::check_dots_unnamed()
 
-    out <- "\n\n:::{%s}\n\n%s\n\n:::\n"
-    args <- rlang::dots_list(...)
-    attr <- attr %||% "" |>
-        paste0(collapse = " ")
-    content <- args |>
-        paste0(collapse = "\n\n")
+    template_string <- "\n\n:::{%s}\n\n%s\n\n:::\n"
+    dots <- rlang::dots_list(...)
+    attribs <-  paste0(attr %||% "", collapse = " ")
+    content <- paste0(dots, collapse = "\n\n")
 
     structure(
-        sprintf(out, attr, content),
+        sprintf(template_string, attribs, content),
         class = "knit_asis"
     )
 }
@@ -38,10 +37,11 @@ div <- function(..., attr = NULL) {
 #' Create a quarto span element
 #' @description
 #' Create a span element with optional attributes to assign to it. Dots
-#' are collapsed into a single character vector with a space between each element.
+#' are collapsed into a single character vector with a space between
+#' each element.
 #'
-#' If attr is a vector with a length > 1, attributes will be combined into a single
-#'  character vector via [base::paste0].
+#' If attr is a vector with a length > 1, attributes will be combined into
+#' a single character vector via [base::paste0].
 #' @inheritParams div
 #' @examples
 #' span("Hello world!", attr = ".bold")
@@ -51,15 +51,13 @@ div <- function(..., attr = NULL) {
 span <- function(..., attr = NULL) {
     rlang::check_dots_unnamed()
 
-    out <- "[%s]{%s}"
-    args <- rlang::dots_list(...)
-    attr <- attr %||% "" |>
-        paste0(collapse = " ")
-    content <- args |>
-        paste0(collapse = " ")
+    template_string <- "[%s]{%s}"
+    dots <- rlang::dots_list(...)
+    attribs <-  paste0(attr %||% "", collapse = " ")
+    content <- paste0(dots, collapse = " ")
 
     structure(
-        sprintf(out, content, attr),
+        sprintf(template_string, content, attribs),
         class = "knit_asis"
     )
 }

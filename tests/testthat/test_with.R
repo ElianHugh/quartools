@@ -18,3 +18,17 @@ test_that("with_*() output is as expected", {
         expect_true(input[[i]] == expectations[[i]])
     })
 })
+
+test_that("with_*() disallows invalid extensions", {
+    input <- list(
+        quote(with_body_column(extension = "shaded")),
+        quote(with_page_column(extension = "shaded")),
+        quote(with_screen_inset_column(extension = "bad")),
+        quote(with_screen_column(extension = "shaded")),
+        quote(with_margin_column(extension = "shaded"))
+    )
+    lapply(input, function(x) {
+        expect_error(eval(x))
+    })
+})
+

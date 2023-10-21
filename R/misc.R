@@ -5,6 +5,8 @@
 #' the character vector as markdown content, rather than as an R value.
 #' @param x object to convert to character vector
 #' @inheritParams base::paste0
+#' @examples
+#' as_markdown(c("Hello world!"))
 #' @return character vector of length 1
 #' @export
 as_markdown <- function(x, collapse = "") {

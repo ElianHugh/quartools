@@ -18,14 +18,14 @@ function calls. As *quartools* generates quarto-compliant markdown, and
 ## Why quartools?
 
 At work, I ran into an issue where I was generating hundreds of
-parameterised reports that would be similar with subtle differences in
-content. I found myself leaning on R for programmatic markup creation,
-which meant that I could have one master document that I worked on. My
-prototype version (in other words, functions I threw together for work)
-required a lot of constant chunk configuration, and wasn’t particularly
-user-friendly nor elegant. *quartools* is a more streamlined version of
-my prototype, with the added benefit of it requiring little to no setup
-on the end user’s part.
+parameterised reports that would require parts of the report to be
+dynamically populated. I found myself leaning on R for programmatic
+markup creation, which meant that I could have one master document that
+I worked on. My prototype version (in other words, functions I threw
+together for work) required a lot of constant chunk configuration, and
+wasn’t particularly user-friendly nor elegant. *quartools* is a more
+streamlined version of my prototype, with the added benefit of it
+requiring little to no setup on the end user’s part.
 
 ## Installation
 

@@ -16,10 +16,11 @@ character vector of length 1
 }
 \description{
 Create a div block element with optional attributes to assign to it. Dots
-are collapsed into a single character vector with a newline between each element.
+are collapsed into a single character vector with a newline between each
+element.
 
-If attr is a vector with a length > 1, attributes will be combined into a
-single character vector via \link[base:paste]{base::paste0}.
+If attr is a vector with a length > 1, attributes will be combined into
+a single character vector via \link[base:paste]{base::paste0}.
 }
 \examples{
 # Create a quarto tip callout

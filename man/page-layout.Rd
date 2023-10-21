@@ -27,6 +27,9 @@ with_margin_column(..., attr = NULL)
 
 \item{extension}{affix class to apply to column class}
 }
+\value{
+character vector of length 1
+}
 \description{
 Create a div block that modifies the current quarto layout column temporarily.
 
