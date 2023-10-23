@@ -46,38 +46,24 @@ devtools::install_github("ElianHugh/quartools")
 
 ### My First Div
 
-``` r
-library(quartools)
-div(
-    "The simplest way to create a div block element with quartools is via the `div` function.",
-    "Note that the chunk configuration of `results: asis` is not necessary."
-)
-```
-
-<div>
-
 The simplest way to create a div block element with quartools is via the
-`div` function.
-
-Note that the chunk configuration of `results: asis` is not necessary.
-
-</div>
+`div` function. Note that the chunk configuration of `results: asis` is
+not necessary.
 
 ``` r
 div(
     "It is also possible to supply attributes to the div block element via the `attr` parameter.",
     attr = ".callout-tip"
-)
+) |> print()
 ```
 
-<div>
 
-> **Tip**
->
-> It is also possible to supply attributes to the div block element via
-> the `attr` parameter.
 
-</div>
+    :::{.callout-tip}
+
+    It is also possible to supply attributes to the div block element via the `attr` parameter.
+
+    :::
 
 ### Apply
 
@@ -89,24 +75,33 @@ apply”) which allows for directly printing the result as valid markdown
 content.
 
 ``` r
-my_favourite_letters <- letters[1L:3L]
-mdapply(my_favourite_letters, div)
+input <- list(
+    list(type = "tip", msg = "a tip"),
+    list(type = "warning", msg = "a warning"),
+    list(type = "message", msg = "a message")
+)
+mdapply(input, function(x) div(x$msg, attr = sprintf(".callout-%s", x$type))) |>
+    print()
 ```
 
-<div>
 
-a
 
-</div>
+    :::{.callout-tip}
 
-<div>
+    a tip
 
-b
+    :::
 
-</div>
 
-<div>
+    :::{.callout-warning}
 
-c
+    a warning
 
-</div>
+    :::
+
+
+    :::{.callout-message}
+
+    a message
+
+    :::

@@ -25,7 +25,7 @@ with_margin_column(..., attr = NULL)
 
 \item{outset}{should the outset affix be applied to the column class?}
 
-\item{extension}{affix class to apply to column class}
+\item{extension}{affix to apply to column class}
 }
 \value{
 character vector of length 1

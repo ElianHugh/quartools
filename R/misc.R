@@ -12,7 +12,7 @@
 as_markdown <- function(x, collapse = "") {
     structure(
         paste0(x, collapse = collapse),
-        class = "knit_asis"
+        class = c("knit_asis", "quarto_block")
     )
 }
 

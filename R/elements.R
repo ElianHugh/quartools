@@ -30,7 +30,7 @@ div <- function(..., attr = NULL) {
 
     structure(
         sprintf(template_string, attribs, content),
-        class = "knit_asis"
+        class = c("knit_asis", "quarto_block")
     )
 }
 
@@ -58,6 +58,6 @@ span <- function(..., attr = NULL) {
 
     structure(
         sprintf(template_string, content, attribs),
-        class = "knit_asis"
+        class = c("knit_asis", "quarto_block")
     )
 }

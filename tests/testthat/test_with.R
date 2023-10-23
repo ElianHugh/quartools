@@ -31,4 +31,3 @@ test_that("with_*() disallows invalid extensions", {
         expect_error(eval(x))
     })
 })
-

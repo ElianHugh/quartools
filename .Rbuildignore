@@ -5,3 +5,4 @@
 ^LICENSE\.md$
 ^\.lintr$
 ^codecov\.yml$
+^vignettes/articles$
