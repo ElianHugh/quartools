@@ -1,3 +1,12 @@
+handle_extensions <- function(extension, valid_extensions) {
+    if (!is.null(extension)) {
+        rlang::arg_match0(extension, valid_extensions)
+        extension_string <- paste0("-", extension)
+        return(extension_string)
+    }
+    return("")
+}
+
 #' Temporarily modify page layout
 #' @description
 #' Create a div block that modifies the current quarto layout column temporarily.
@@ -13,9 +22,8 @@
 #' @return character vector of length 1
 #' @rdname page-layout
 with_body_column <- function(..., attr = NULL, outset = FALSE, extension = NULL) {
-    check_extension_arg(extension, c("left", "right"))
+    extension_string <- handle_extensions(extension, c("left", "right"))
     outset_string <- ifelse(isTRUE(outset), "-outset", "")
-    extension_string <- ifelse(!is.null(extension), paste0("-", extension), "")
     cls <- sprintf(".column-body%s%s", outset_string, extension_string)
     div(..., attr = c(cls, attr))
 }
@@ -23,8 +31,7 @@ with_body_column <- function(..., attr = NULL, outset = FALSE, extension = NULL)
 #' @export
 #' @rdname page-layout
 with_page_column <- function(..., attr = NULL, extension = NULL) {
-    check_extension_arg(extension, c("left", "right"))
-    extension_string <- ifelse(!is.null(extension), paste0("-", extension), "")
+    extension_string <- handle_extensions(extension, c("left", "right"))
     cls <- sprintf(".column-page%s", extension_string)
     div(..., attr = c(cls, attr))
 }
@@ -32,8 +39,7 @@ with_page_column <- function(..., attr = NULL, extension = NULL) {
 #' @export
 #' @rdname page-layout
 with_screen_inset_column <- function(..., attr = NULL, extension = NULL) {
-    check_extension_arg(extension, c("left", "right", "shaded"))
-    extension_string <- ifelse(!is.null(extension), paste0("-", extension), "")
+    extension_string <- handle_extensions(extension, c("left", "right", "shaded"))
     cls <- sprintf(".column-screen-inset%s", extension_string)
     div(..., attr = c(cls, attr))
 }
@@ -41,8 +47,7 @@ with_screen_inset_column <- function(..., attr = NULL, extension = NULL) {
 #' @export
 #' @rdname page-layout
 with_screen_column <- function(..., attr = NULL, extension = NULL) {
-    check_extension_arg(extension, c("left", "right"))
-    extension_string <- ifelse(!is.null(extension), paste0("-", extension), "")
+    extension_string <- handle_extensions(extension, c("left", "right"))
     cls <- sprintf(".column-screen%s", extension_string)
     div(..., attr = c(cls, attr))
 }
