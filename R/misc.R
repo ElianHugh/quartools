@@ -3,15 +3,15 @@
 #' This is a wrapper around [base::paste0] which sets the class of the resulting
 #' character vector to "knit_asis". This means that the [knitr::knitr] engine will render
 #' the character vector as markdown content, rather than as an R value.
-#' @param x object to convert to character vector
+#' @param ... dots to convert to character vector
 #' @inheritParams base::paste0
 #' @examples
 #' as_markdown(c("Hello world!"))
 #' @return character vector of length 1
 #' @export
-as_markdown <- function(x, collapse = "") {
+as_markdown <- function(..., collapse = "") {
     structure(
-        paste0(x, collapse = collapse),
+        paste0(..., collapse = collapse),
         class = c("knit_asis", "quarto_block")
     )
 }

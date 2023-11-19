@@ -4,13 +4,14 @@
 \alias{as_markdown}
 \title{Convert to markdown chunk}
 \usage{
-as_markdown(x, collapse = "")
+as_markdown(..., collapse = "")
 }
 \arguments{
-\item{x}{object to convert to character vector}
+\item{...}{dots to convert to character vector}
 
 \item{collapse}{an optional character string to separate the results.  Not
-    \code{\link[base]{NA_character_}}.}
+    \code{\link[base]{NA_character_}}.  When \code{collapse} is a string,
+    the result is always a string (\code{\link[base]{character}} of length 1).}
 }
 \value{
 character vector of length 1
