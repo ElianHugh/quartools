@@ -21,7 +21,7 @@ qto_callout(
 )
 }
 \arguments{
-\item{...}{dots to convert to character vector}
+\item{...}{Heading text passed to \code{\link[=qto_block]{qto_block()}}.}
 
 \item{type}{Callout type. One of "note", "tip", "warning", "caution", or
 "important". \url{https://quarto.org/docs/authoring/callouts.html#callout-types}}
@@ -39,6 +39,8 @@ qto_callout(
 
 \item{.attributes}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
+
+\item{level}{Heading level. Defaults to 1.}
 
 \item{fence}{If numeric, \code{fence} must be a minimum of 3 and sets the number
 of times the standard fence character ":" should be repeated. If character,
