@@ -52,8 +52,8 @@ not necessary.
 
 ``` r
 div(
-    "It is also possible to supply attributes to the div block element via the `attr` parameter.",
-    attr = ".callout-tip"
+  "It is also possible to supply attributes to the div block element via the `attr` parameter.",
+  attr = ".callout-tip"
 ) |> print()
 ```
 
@@ -76,12 +76,12 @@ content.
 
 ``` r
 input <- list(
-    list(type = "tip", msg = "a tip"),
-    list(type = "warning", msg = "a warning"),
-    list(type = "message", msg = "a message")
+  list(type = "tip", msg = "a tip"),
+  list(type = "warning", msg = "a warning"),
+  list(type = "message", msg = "a message")
 )
 mdapply(input, function(x) div(x$msg, attr = sprintf(".callout-%s", x$type))) |>
-    print()
+  print()
 ```
 
 

@@ -21,3 +21,14 @@ bracket <- function(x, before = "[", after = "]", allow_empty = TRUE) {
 parentheses <- function(x, before = "(", after = ")", allow_empty = TRUE) {
   combine(x, before, after, allow_empty)
 }
+
+#' @noRd
+build_readme_qmd <- function(path = ".", quiet = TRUE, ...) {
+  check_installed("quarto")
+
+  qmd_path <- file.path(path, "README.qmd")
+
+  if (is_installed("quarto") && file.exists(qmd_path)) {
+    quarto::quarto_render(input = qmd_path, output_file = "README.md", quiet = quiet, ...)
+  }
+}
