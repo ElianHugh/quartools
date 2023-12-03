@@ -1,4 +1,4 @@
 #' @export
 print.quarto_block <- function(x, ...) {
-    cat(x, sep = "\n")
+  cat(x, sep = "\n")
 }

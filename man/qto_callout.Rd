@@ -54,14 +54,14 @@ to only some scenarios. \url{https://quarto.org/docs/authoring/callouts.html}
 \examples{
 
 qto_callout(
-"Callouts provide a simple way to attract attention, for example, to this warning.",
-type = "warning"
+  "Callouts provide a simple way to attract attention, for example, to this warning.",
+  type = "warning"
 )
 
 qto_callout(
-"This is an example of a callout with a title.",
-type = "tip",
-title = "Tip with a title"
+  "This is an example of a callout with a title.",
+  type = "tip",
+  title = "Tip with a title"
 )
 
 }

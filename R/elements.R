@@ -14,24 +14,24 @@
 #'
 #' # div calls can be nested
 #' div(
-#'  div("Hello world!"),
-#'  attr = ".my_class"
+#'   div("Hello world!"),
+#'   attr = ".my_class"
 #' )
 #' @return character vector of length 1
 #' @family elements
 #' @export
 div <- function(..., attr = NULL) {
-    rlang::check_dots_unnamed()
+  rlang::check_dots_unnamed()
 
-    template_string <- "\n\n:::{%s}\n\n%s\n\n:::\n"
-    dots <- rlang::dots_list(...)
-    attribs <-  paste0(attr %||% "", collapse = " ")
-    content <- paste0(dots, collapse = "\n\n")
+  template_string <- "\n\n:::{%s}\n\n%s\n\n:::\n"
+  dots <- rlang::dots_list(...)
+  attribs <- paste0(attr %||% "", collapse = " ")
+  content <- paste0(dots, collapse = "\n\n")
 
-    structure(
-        sprintf(template_string, attribs, content),
-        class = c("knit_asis", "quarto_block")
-    )
+  structure(
+    sprintf(template_string, attribs, content),
+    class = c("knit_asis", "quarto_block")
+  )
 }
 
 #' Create a quarto span element
@@ -49,15 +49,15 @@ div <- function(..., attr = NULL) {
 #' @family elements
 #' @export
 span <- function(..., attr = NULL) {
-    rlang::check_dots_unnamed()
+  rlang::check_dots_unnamed()
 
-    template_string <- "[%s]{%s}"
-    dots <- rlang::dots_list(...)
-    attribs <-  paste0(attr %||% "", collapse = " ")
-    content <- paste0(dots, collapse = " ")
+  template_string <- "[%s]{%s}"
+  dots <- rlang::dots_list(...)
+  attribs <- paste0(attr %||% "", collapse = " ")
+  content <- paste0(dots, collapse = " ")
 
-    structure(
-        sprintf(template_string, content, attribs),
-        class = c("knit_asis", "quarto_block")
-    )
+  structure(
+    sprintf(template_string, content, attribs),
+    class = c("knit_asis", "quarto_block")
+  )
 }
