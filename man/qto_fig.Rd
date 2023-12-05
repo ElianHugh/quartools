@@ -26,8 +26,8 @@ valid URL. URLs are not checked if they work.}
 \url{https://quarto.org/docs/authoring/figures.html}
 }
 \examples{
-qto_img("image.jpeg", "Image caption", alt = "Image alt text")
+qto_fig("image.jpeg", "Image caption", alt = "Image alt text")
 
-qto_img("graphic.pdf", title = "Title of the graphic")
+qto_fig("graphic.pdf", title = "Title of the graphic")
 
 }

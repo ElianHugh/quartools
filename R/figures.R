@@ -5,9 +5,9 @@
 #' @param allow_missing If `FALSE`, error if src is not an existing file or a
 #'   valid URL. URLs are not checked if they work.
 #' @examples
-#' qto_img("image.jpeg", "Image caption", alt = "Image alt text")
+#' qto_fig("image.jpeg", "Image caption", alt = "Image alt text")
 #'
-#' qto_img("graphic.pdf", title = "Title of the graphic")
+#' qto_fig("graphic.pdf", title = "Title of the graphic")
 #'
 #' @export
 qto_fig <- function(src,
