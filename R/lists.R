@@ -26,8 +26,9 @@ qto_definition_list <- function(...,
     replacement = .replacement
   )
 
+  # FIXME: Unsure why this is needed
   if (has_length(.list, 1)) {
-    .list <- .list[[1]]
+    .list <- .list[1]
   }
 
   qto_block(
