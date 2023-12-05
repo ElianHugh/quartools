@@ -37,3 +37,4 @@ Other elements:
 \code{\link{span}()}
 }
 \concept{elements}
+\keyword{internal}

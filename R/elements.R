@@ -19,6 +19,7 @@
 #' )
 #' @return character vector of length 1
 #' @family elements
+#' @keywords internal
 #' @export
 div <- function(..., attr = NULL) {
   rlang::check_dots_unnamed()
@@ -47,6 +48,7 @@ div <- function(..., attr = NULL) {
 #' span("Hello world!", attr = ".bold")
 #' @return character vector of length 1
 #' @family elements
+#' @keywords internal
 #' @export
 span <- function(..., attr = NULL) {
   rlang::check_dots_unnamed()
