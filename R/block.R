@@ -74,9 +74,9 @@ qto_div <- function(...,
     .attributes = .attributes
   )
 
-  rlang::check_dots_unnamed()
+  check_dots_unnamed()
 
-  .content <- .content %||% rlang::dots_list(...)
+  .content <- .content %||% dots_list(...)
 
   if (drop_empty) {
     .content <- list_drop_empty(.content)

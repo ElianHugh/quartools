@@ -33,7 +33,7 @@ map_qto <- function(.x,
                     .f = NULL,
                     ...,
                     .type = c("block", "div", "callout", "heading")) {
-  .type <- rlang::arg_match(.type)
+  .type <- arg_match(.type)
 
   map(
     .x,

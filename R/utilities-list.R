@@ -18,7 +18,7 @@ list_drop_or_replace_na <- function(x,
 #'
 #' @noRd
 list_drop_empty <- function(x) {
-  x[!vapply(x, rlang::is_empty, TRUE)]
+  x[!vapply(x, is_empty, TRUE)]
 }
 
 #' Drop NA items from a list
