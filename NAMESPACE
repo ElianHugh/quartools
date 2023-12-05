@@ -3,6 +3,7 @@
 S3method(print,quarto_block)
 export(as_markdown)
 export(div)
+export(map_qto)
 export(mdapply)
 export(qto_attributes)
 export(qto_block)
