@@ -44,35 +44,75 @@ devtools::install_github("ElianHugh/quartools")
 
 ## Example
 
-### My First Div
+``` r
+library(quartools)
+```
+
+### Basic usage
 
 The simplest way to create a div block element with quartools is via the
-`div` function. Note that the chunk configuration of `results: asis` is
-not necessary.
+`qto_div` function. Note that the chunk configuration of `results: asis`
+is not necessary.
 
 ``` r
-div(
-  "It is also possible to supply attributes to the div block element via the `attr` parameter.",
-  attr = ".callout-tip"
-) |> print()
+div_example <- qto_div(
+  "It is also possible to supply attributes to the div block element via the `id`, `class`, and `.attributes` parameters.",
+  id = "qto-div-example"
+)
+
+print(div_example)
+```
+
+
+    ::: {#qto-div-example}
+    It is also possible to supply attributes to the div block element via the `id`, `class`, and `.attributes` parameters. 
+    :::
+
+The `qto_callout()` function creates a callout styled div:
+
+``` r
+callout_example <- qto_callout(
+ "Callouts provide a simple way to attract attention, for example, to this warning.",
+ type = "warning"
+)
+
+print(callout_example)
+```
+
+
+    ::: {.callout-warning}
+    Callouts provide a simple way to attract attention, for example, to this warning. 
+    :::
+
+Other simple functions include `qto_heading` or `qto_definition_list`:
+
+``` r
+heading_example <- qto_heading("Heading 1")
+
+print(heading_example)
+```
+
+    # Heading 1
+
+``` r
+definition_list_example <- qto_definition_list("Term" = "Definition")
+
+print(definition_list_example)
 ```
 
 
 
-    :::{.callout-tip}
+    :   Definition
 
-    It is also possible to supply attributes to the div block element via the `attr` parameter.
-
-    :::
-
-### Apply
+### Using loops to create Quarto Markdown
 
 We can leverage the `apply` family of functions ability to loop over
-list elements to simplify creating many divs at once. Normally this
-would require a workaround to allow for printing directly as markdown
-content, but *quartools* exports the `mdapply` function (read: “markdown
-apply”) which allows for directly printing the result as valid markdown
-content.
+list elements to simplify creating many divs at once.
+
+Normally this would require a workaround to allow for printing directly
+as markdown content, but `{quartools}` exports the `mdapply` function
+(read: “markdown apply”) which allows for directly printing the result
+as valid markdown content:
 
 ``` r
 input <- list(
@@ -80,6 +120,7 @@ input <- list(
   list(type = "warning", msg = "a warning"),
   list(type = "message", msg = "a message")
 )
+
 mdapply(input, function(x) div(x$msg, attr = sprintf(".callout-%s", x$type))) |>
   print()
 ```
@@ -104,4 +145,33 @@ mdapply(input, function(x) div(x$msg, attr = sprintf(".callout-%s", x$type))) |>
 
     a message
 
+    :::
+
+`map_qto()` is a similar alternative and allows users to set the
+function using the `.type` parameter:
+
+``` r
+qto_list <- map_qto(list("This is a note.", "And this is a note.", "And this is a note"), .type = "callout")
+
+print(qto_list)
+```
+
+    [[1]]
+
+    ::: {.callout-note}
+    This is a note. 
+    :::
+
+
+    [[2]]
+
+    ::: {.callout-note}
+    And this is a note. 
+    :::
+
+
+    [[3]]
+
+    ::: {.callout-note}
+    And this is a note 
     :::
