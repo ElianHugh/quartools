@@ -1,5 +1,7 @@
 #' @noRd
 combine <- function(x, before = "", after = before, allow_empty = TRUE) {
+  check_string(x, allow_empty = allow_empty)
+
   if (!allow_empty && x == "") {
     return(x)
   }
