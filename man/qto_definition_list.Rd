@@ -10,6 +10,7 @@ qto_definition_list(
   .definition = NULL,
   .list = NULL,
   .drop_na = FALSE,
+  .sep = "\\n",
   .replacement = ""
 )
 }

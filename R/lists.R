@@ -14,6 +14,7 @@ qto_definition_list <- function(...,
                                 .definition = NULL,
                                 .list = NULL,
                                 .drop_na = FALSE,
+                                .sep = "\n",
                                 .replacement = "") {
   if (!is.null(.term) && !is.null(.definition)) {
     .list <- .list %||% set_names(.definition, .term)
@@ -21,13 +22,17 @@ qto_definition_list <- function(...,
 
   .list <- list_drop_or_replace_na(
     .list %||% list2(...),
-    .drop_na = .drop_na,
-    .replacement = .replacement
+    drop_na = .drop_na,
+    replacement = .replacement
   )
+
+  if (has_length(.list, 1)) {
+    .list <- .list[[1]]
+  }
 
   qto_block(
     names(.list),
-    "\n",
+    .sep,
     "\n:   ",
     .list,
     collapse = "\n\n"
