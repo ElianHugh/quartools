@@ -6,9 +6,9 @@
 \alias{qto_li}
 \title{Create ordered or unordered lists for Quarto}
 \usage{
-qto_ol(.list = NULL, ..., level = 1)
+qto_ol(.list = NULL, ..., level = 1, symbol = "1.")
 
-qto_li(.list = NULL, ..., level = 1, symbol = "*")
+qto_li(.list = NULL, ..., level = 1, symbol = "*", sep = "")
 }
 \arguments{
 \item{.list}{A vector of list items. Optional if items are passed to \code{...}.}
@@ -27,11 +27,15 @@ the Quarto documentation for more information on lists:
 \url{https://quarto.org/docs/authoring/markdown-basics.html#lists}
 }
 \examples{
-qto_ol(LETTERS[1:3])
+qto_ol(LETTERS[1:2])
 
-qto_li(LETTERS[4:6])
+qto_li(LETTERS[3:4])
 
-qto_li(LETTERS[7:9], level = 2)
+qto_li(LETTERS[5:6], level = 2)
+
+qto_ol(LETTERS[7:8], sep = "\n")
+
+qto_li(LETTERS[5:6], symbol = c("*", "    +"))
 
 }
 \seealso{

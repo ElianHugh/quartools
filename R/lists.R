@@ -59,11 +59,15 @@ qto_dl <- function(...,
 #'   are not yet supported.
 #' @seealso [qto_dl()]
 #' @examples
-#' qto_ol(LETTERS[1:3])
+#' qto_ol(LETTERS[1:2])
 #'
-#' qto_li(LETTERS[4:6])
+#' qto_li(LETTERS[3:4])
 #'
-#' qto_li(LETTERS[7:9], level = 2)
+#' qto_li(LETTERS[5:6], level = 2)
+#'
+#' qto_ol(LETTERS[7:8], sep = "\n")
+#'
+#' qto_li(LETTERS[5:6], symbol = c("*", "    +"))
 #'
 #' @name qto_list
 NULL
@@ -71,12 +75,12 @@ NULL
 #' @rdname qto_list
 #' @name qto_ol
 #' @export
-qto_ol <- function(.list = NULL, ..., level = 1) {
+qto_ol <- function(.list = NULL, ..., level = 1, symbol = "1.") {
   qto_li(
     .list = .list,
     ...,
     level = level,
-    symbol = "1."
+    symbol = symbol
   )
 }
 
@@ -85,19 +89,19 @@ qto_ol <- function(.list = NULL, ..., level = 1) {
 #' @param symbol Symbol to use for list bullet. Use "(@)" to create a list where
 #'   numbering continues after interruption.
 #' @export
-qto_li <- function(.list = NULL, ..., level = 1, symbol = "*") {
+qto_li <- function(.list = NULL, ..., level = 1, symbol = "*", sep = "") {
   .list <- .list %||% rlang::list2(...)
 
-  check_string(symbol, allow_empty = FALSE)
+  check_character(symbol)
 
   qto_block(
-    "",
+    "\n",
     paste0(
       indent_level(level),
       symbol, " ",
       .list
     ),
-    collapse = "\n"
+    sep = sep
   )
 }
 
