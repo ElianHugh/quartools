@@ -65,15 +65,15 @@ print(div_example)
 
 
     ::: {#qto-div-example}
-    It is also possible to supply attributes to the div block element via the `id`, `class`, and `.attributes` parameters. 
-    :::
+    It is also possible to supply attributes to the div block element via the `id`, `class`, and `.attributes` parameters.
+    ::: 
 
 The `qto_callout()` function creates a callout styled div:
 
 ``` r
 callout_example <- qto_callout(
- "Callouts provide a simple way to attract attention, for example, to this warning.",
- type = "warning"
+  "Callouts provide a simple way to attract attention, for example, to this warning.",
+  type = "warning"
 )
 
 print(callout_example)
@@ -81,8 +81,8 @@ print(callout_example)
 
 
     ::: {.callout-warning}
-    Callouts provide a simple way to attract attention, for example, to this warning. 
-    :::
+    Callouts provide a simple way to attract attention, for example, to this warning.
+    ::: 
 
 Other simple functions include `qto_heading` or `qto_definition_list`:
 
@@ -95,14 +95,27 @@ print(heading_example)
     # Heading 1
 
 ``` r
-definition_list_example <- qto_definition_list("Term" = "Definition")
+dl_example <- qto_dl("Term" = "Definition")
 
-print(definition_list_example)
+print(dl_example)
 ```
 
-
+    Term
 
     :   Definition
+
+You can also use `qto_fig()` to embed images:
+
+``` r
+fig_example <- qto_fig(
+  "https://quarto.org/quarto.png",
+  "Quarto logo"
+)
+
+print(fig_example)
+```
+
+    ![Quarto logo](https://quarto.org/quarto.png)
 
 ### Using loops to create Quarto Markdown
 
@@ -159,19 +172,19 @@ print(qto_list)
     [[1]]
 
     ::: {.callout-note}
-    This is a note. 
-    :::
+    This is a note.
+    ::: 
 
 
     [[2]]
 
     ::: {.callout-note}
-    And this is a note. 
-    :::
+    And this is a note.
+    ::: 
 
 
     [[3]]
 
     ::: {.callout-note}
-    And this is a note 
-    :::
+    And this is a note
+    ::: 

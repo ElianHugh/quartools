@@ -57,8 +57,8 @@ The `qto_callout()` function creates a callout styled div:
 
 ```{r}
 callout_example <- qto_callout(
- "Callouts provide a simple way to attract attention, for example, to this warning.",
- type = "warning"
+  "Callouts provide a simple way to attract attention, for example, to this warning.",
+  type = "warning"
 )
 
 print(callout_example)
@@ -70,9 +70,20 @@ heading_example <- qto_heading("Heading 1")
 
 print(heading_example)
 
-definition_list_example <- qto_definition_list("Term" = "Definition")
+dl_example <- qto_dl("Term" = "Definition")
 
-print(definition_list_example)
+print(dl_example)
+```
+
+You can also use `qto_fig()` to embed images:
+
+```{r}
+fig_example <- qto_fig(
+  "https://quarto.org/quarto.png",
+  "Quarto logo"
+)
+
+print(fig_example)
 ```
 
 
