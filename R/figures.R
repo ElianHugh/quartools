@@ -62,12 +62,18 @@ qto_fig <- function(src,
 #' @inheritDotParams qto_attributes
 #' @keywords internal
 qto_fig_span <- function(src, caption = NULL, ...) {
+  fig_attributes <- qto_attributes(
+    ...
+  )
+
+  if (fig_attributes == "{}") {
+    fig_attributes <- ""
+  }
+
   qto_block(
     "!",
     bracket(caption),
     parentheses(src),
-    qto_attributes(
-      ...
-    )
+    fig_attributes
   )
 }
