@@ -13,7 +13,8 @@ qto_callout(
   title = NULL,
   id = NULL,
   class = NULL,
-  .attributes = NULL
+  .attributes = NULL,
+  fence = ":::"
 )
 }
 \arguments{
@@ -24,9 +25,6 @@ qto_callout(
 ignored. If \code{.content} is \code{NULL}, it is set as all values passed to \code{...}.}
     \item{\code{drop_empty}}{If \code{TRUE}, drop empty values from \code{.content} or \code{...}}
     \item{\code{drop_na}}{If \code{TRUE}, drop \code{NA} values from \code{.content} or \code{...}}
-    \item{\code{fence}}{If numeric, \code{fence} must be a minimum of 3 and sets the number
-of times the standard fence character ":" should be repeated. If character,
-\code{fence} is used as is.}
     \item{\code{css}}{If \code{{htmltools}} is installed, a list of css style attributes to
 pass to \code{\link[htmltools:css]{htmltools::css()}}.}
   }}
@@ -47,6 +45,10 @@ pass to \code{\link[htmltools:css]{htmltools::css()}}.}
 
 \item{.attributes}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
+
+\item{fence}{If numeric, \code{fence} must be a minimum of 3 and sets the number
+of times the standard fence character ":" should be repeated. If character,
+\code{fence} is used as is.}
 }
 \description{
 Callouts are an excellent way to draw extra attention to certain concepts, or
