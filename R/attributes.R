@@ -43,11 +43,9 @@ qto_attributes <- function(id = NULL,
     .collapse = " "
   )
 
-  if (is.null(c(id, class, css, .attributes))) {
-    return("")
+  if (!is.null(c(id, class, css, .attributes))) {
+    .attributes <- paste0(c(id, class, css, .attributes), collapse = " ")
   }
-
-  .attributes <- paste0(c(id, class, css, .attributes), collapse = " ")
 
   switch(.output,
     embrace = embrace(.attributes),
