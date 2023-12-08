@@ -4,7 +4,7 @@
 \alias{qto_fig_span}
 \title{Simplified helper for qto_fig()}
 \usage{
-qto_fig_span(src, caption = "", ...)
+qto_fig_span(src, caption = NULL, ...)
 }
 \arguments{
 \item{src}{Image source. Either a file path or URL.}

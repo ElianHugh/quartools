@@ -6,7 +6,7 @@
 \usage{
 qto_fig(
   src,
-  caption = "",
+  caption = NULL,
   alt = NULL,
   reference = NULL,
   align = NULL,

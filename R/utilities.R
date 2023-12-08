@@ -1,27 +1,39 @@
 #' @noRd
-combine <- function(x, before = "", after = before, allow_empty = TRUE) {
-  check_string(x, allow_empty = allow_empty)
+combine <- function(x,
+                    before = "",
+                    after = before,
+                    allow_empty = TRUE,
+                    allow_null = TRUE) {
+  check_string(x, allow_empty = allow_empty, allow_null = allow_null)
 
-  if (!allow_empty && x == "") {
-    return(x)
-  }
-
-  paste0(before, x, after)
+  paste0(before, x %||% "", after)
 }
 
 #' @noRd
-embrace <- function(x, before = "{", after = "}", allow_empty = TRUE) {
-  combine(x, before, after, allow_empty)
+embrace <- function(x,
+                    before = "{",
+                    after = "}",
+                    allow_empty = TRUE,
+                    allow_null = TRUE) {
+  combine(x, before, after, allow_empty, allow_null)
 }
 
 #' @noRd
-bracket <- function(x, before = "[", after = "]", allow_empty = TRUE) {
-  combine(x, before, after, allow_empty)
+bracket <- function(x,
+                    before = "[",
+                    after = "]",
+                    allow_empty = TRUE,
+                    allow_null = TRUE) {
+  combine(x, before, after, allow_empty, allow_null)
 }
 
 #' @noRd
-parentheses <- function(x, before = "(", after = ")", allow_empty = TRUE) {
-  combine(x, before, after, allow_empty)
+parentheses <- function(x,
+                        before = "(",
+                        after = ")",
+                        allow_empty = TRUE,
+                        allow_null = TRUE) {
+  combine(x, before, after, allow_empty, allow_null)
 }
 
 #' @noRd
@@ -31,6 +43,11 @@ build_readme_qmd <- function(path = ".", quiet = TRUE, ...) {
   qmd_path <- file.path(path, "README.qmd")
 
   if (is_installed("quarto") && file.exists(qmd_path)) {
-    quarto::quarto_render(input = qmd_path, output_file = "README.md", quiet = quiet, ...)
+    quarto::quarto_render(
+      input = qmd_path,
+      output_file = "README.md",
+      quiet = quiet,
+      ...
+      )
   }
 }

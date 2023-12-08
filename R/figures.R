@@ -11,7 +11,7 @@
 #'
 #' @export
 qto_fig <- function(src,
-                    caption = "",
+                    caption = NULL,
                     alt = NULL,
                     reference = NULL,
                     align = NULL,
@@ -39,8 +39,8 @@ qto_fig <- function(src,
   }
 
   qto_fig_span(
-    caption,
-    src,
+    src = src,
+    caption = caption,
     id = reference,
     .attributes = c(
       list(
@@ -61,7 +61,7 @@ qto_fig <- function(src,
 #' @param caption Caption text
 #' @inheritDotParams qto_attributes
 #' @keywords internal
-qto_fig_span <- function(src, caption = "", ...) {
+qto_fig_span <- function(src, caption = NULL, ...) {
   qto_block(
     "!",
     bracket(caption),
