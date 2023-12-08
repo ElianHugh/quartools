@@ -3,12 +3,12 @@
     Code
       qto_fig("image.jpeg", "Image caption", alt = "Image alt text")
     Output
-      ![image.jpeg](Image caption){fig-alt='Image alt text'}
+      ![Image caption](image.jpeg){fig-alt='Image alt text'}
 
 ---
 
     Code
       qto_fig("graphic.pdf", title = "Title of the graphic")
     Output
-      ![graphic.pdf "Title of the graphic"]()
+      ![](graphic.pdf "Title of the graphic")
 

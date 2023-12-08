@@ -5,7 +5,7 @@
     Output
       
       ::: {#id .class}
-      Example text. 
-      :::
+      Example text.
+      ::: 
       
 
