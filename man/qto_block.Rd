@@ -4,10 +4,13 @@
 \alias{qto_block}
 \title{Create a block of text to render as Markdown text in Quarto}
 \usage{
-qto_block(..., collapse = "", call = caller_env())
+qto_block(..., sep = "", collapse = "", call = caller_env())
 }
 \arguments{
 \item{...}{dots to convert to character vector}
+
+\item{sep}{a character string to separate the terms.  Not
+    \code{\link[base]{NA_character_}}.}
 
 \item{collapse}{an optional character string to separate the results.  Not
     \code{\link[base]{NA_character_}}.  When \code{collapse} is a string,

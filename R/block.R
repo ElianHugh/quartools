@@ -12,10 +12,10 @@
 #' - [knitr::asis_output()]
 #'
 #' @export
-qto_block <- function(..., collapse = "", call = caller_env()) {
+qto_block <- function(..., sep = "", collapse = "", call = caller_env()) {
   check_dots_unnamed(call = call)
   structure(
-    paste0(..., collapse = collapse),
+    paste0(..., sep = sep, collapse = collapse),
     class = c("knit_asis", "quarto_block")
   )
 }
@@ -27,7 +27,7 @@ qto_block <- function(..., collapse = "", call = caller_env()) {
 #' @inheritParams qto_attributes
 #' @param .content If `.content` is supplied, any values passed to `...` are
 #'   ignored. If `.content` is `NULL`, it is set as all values passed to `...`.
-#' @param sep,collapse Passed to [base::paste0()] with `.content.`
+#' @param collapse Passed to [base::paste0()] with `.content.`
 #' @param drop_empty If `TRUE`, drop empty values from `.content` or `...`
 #' @param drop_na If `TRUE`, drop `NA` values from `.content` or `...`
 #' @param fence If numeric, `fence` must be a minimum of 3 and sets the number
@@ -61,19 +61,11 @@ qto_div <- function(...,
                     css = NULL,
                     .attributes = NULL,
                     .content = NULL,
-                    sep = " ",
                     collapse = "",
                     fence = ":::",
                     drop_empty = TRUE,
                     drop_na = TRUE,
                     call = caller_env()) {
-  .attributes <- qto_attributes(
-    id = id,
-    class = class,
-    css = css,
-    .attributes = .attributes
-  )
-
   check_dots_unnamed()
 
   .content <- .content %||% dots_list(...)
@@ -86,15 +78,29 @@ qto_div <- function(...,
     .content <- list_drop_na(.content)
   }
 
+  .attributes <- qto_attributes(
+    id = id,
+    class = class,
+    css = css,
+    .attributes = .attributes
+  )
+
+  qto_block(
+    qto_fence(fence, .attributes),
+    paste0(.content, collapse = collapse),
+    qto_fence(fence),
+    call = call
+  )
+}
+
+#' @noRd
+qto_fence <- function(fence = ":::", .attributes = NULL) {
   if (is.numeric(fence)) {
-    stopifnot(fence < 3)
+    stopifnot(fence > 2)
     fence <- strrep(":", fence)
   }
 
-  qto_block(
-    "\n", fence, " ", .attributes, "\n",
-    paste0(.content, sep = sep, collapse = collapse),
-    "\n", fence, "\n",
-    call = call
+  paste0(
+    "\n", fence, " ", .attributes %||% "", "\n"
   )
 }
