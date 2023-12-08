@@ -37,7 +37,6 @@ qto_callout <- function(...,
                         class = NULL,
                         .attributes = NULL,
                         level = 2,
-                        sep = " ",
                         fence = ":::") {
   type <- arg_match(type)
   class <- paste0("callout-", type)
@@ -75,7 +74,6 @@ qto_callout <- function(...,
     class = class,
     id = id,
     .attributes = .attributes,
-    fence = fence,
-    sep = sep
+    fence = fence
   )
 }

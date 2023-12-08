@@ -16,7 +16,6 @@ qto_callout(
   class = NULL,
   .attributes = NULL,
   level = 2,
-  sep = " ",
   fence = ":::"
 )
 }
