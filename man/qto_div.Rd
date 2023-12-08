@@ -11,7 +11,6 @@ qto_div(
   css = NULL,
   .attributes = NULL,
   .content = NULL,
-  sep = " ",
   collapse = "",
   fence = ":::",
   drop_empty = TRUE,
@@ -35,7 +34,7 @@ passed to \code{...} are ignored.}
 \item{.content}{If \code{.content} is supplied, any values passed to \code{...} are
 ignored. If \code{.content} is \code{NULL}, it is set as all values passed to \code{...}.}
 
-\item{sep, collapse}{Passed to \code{\link[base:paste]{base::paste0()}} with \code{.content.}}
+\item{collapse}{Passed to \code{\link[base:paste]{base::paste0()}} with \code{.content.}}
 
 \item{fence}{If numeric, \code{fence} must be a minimum of 3 and sets the number
 of times the standard fence character ":" should be repeated. If character,
