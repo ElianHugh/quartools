@@ -14,9 +14,9 @@ test_that("qto_shortcode works", {
   )
   expect_snapshot(
     qto_kbd(
-        mac = "Shift-Command-O",
-        win = "Shift-Control-O",
-        linux = "Shift-Ctrl-L"
+      mac = "Shift-Command-O",
+      win = "Shift-Control-O",
+      linux = "Shift-Ctrl-L"
     )
   )
 })
