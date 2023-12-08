@@ -7,20 +7,29 @@
 qto_callout(
   ...,
   type = c("note", "tip", "warning", "caution", "important"),
-  heading = NULL,
   collapse = NULL,
   appearance = NULL,
   icon = NULL,
   title = NULL,
   id = NULL,
   class = NULL,
-  .attributes = NULL,
-  level = 2,
-  fence = ":::"
+  .attributes = NULL
 )
 }
 \arguments{
-\item{...}{Heading text passed to \code{\link[=qto_block]{qto_block()}}.}
+\item{...}{
+  Arguments passed on to \code{\link[=qto_div]{qto_div}}
+  \describe{
+    \item{\code{.content}}{If \code{.content} is supplied, any values passed to \code{...} are
+ignored. If \code{.content} is \code{NULL}, it is set as all values passed to \code{...}.}
+    \item{\code{drop_empty}}{If \code{TRUE}, drop empty values from \code{.content} or \code{...}}
+    \item{\code{drop_na}}{If \code{TRUE}, drop \code{NA} values from \code{.content} or \code{...}}
+    \item{\code{fence}}{If numeric, \code{fence} must be a minimum of 3 and sets the number
+of times the standard fence character ":" should be repeated. If character,
+\code{fence} is used as is.}
+    \item{\code{css}}{If \code{{htmltools}} is installed, a list of css style attributes to
+pass to \code{\link[htmltools:css]{htmltools::css()}}.}
+  }}
 
 \item{type}{Callout type. One of "note", "tip", "warning", "caution", or
 "important". \url{https://quarto.org/docs/authoring/callouts.html#callout-types}}
@@ -38,12 +47,6 @@ qto_callout(
 
 \item{.attributes}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
-
-\item{level}{Heading level. Defaults to 1.}
-
-\item{fence}{If numeric, \code{fence} must be a minimum of 3 and sets the number
-of times the standard fence character ":" should be repeated. If character,
-\code{fence} is used as is.}
 }
 \description{
 Callouts are an excellent way to draw extra attention to certain concepts, or

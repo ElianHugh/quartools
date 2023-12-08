@@ -10,8 +10,8 @@
 #'   <https://quarto.org/docs/authoring/callouts.html#appearance>
 #' @param collapse If `TRUE`, create a folded callout. <https://quarto.org/docs/authoring/callouts.html#collapse>
 #' @param icon If `FALSE`, create a callout with an icon. <https://quarto.org/docs/authoring/callouts.html#icons>
-#' @inheritParams qto_heading
 #' @inheritParams qto_div
+#' @inheritDotParams qto_div
 #' @examples
 #'
 #' qto_callout(
@@ -28,16 +28,13 @@
 #' @export
 qto_callout <- function(...,
                         type = c("note", "tip", "warning", "caution", "important"),
-                        heading = NULL,
                         collapse = NULL,
                         appearance = NULL,
                         icon = NULL,
                         title = NULL,
                         id = NULL,
                         class = NULL,
-                        .attributes = NULL,
-                        level = 2,
-                        fence = ":::") {
+                        .attributes = NULL) {
   type <- arg_match(type)
   class <- paste0("callout-", type)
 
@@ -62,15 +59,8 @@ qto_callout <- function(...,
 
   .attributes <- list_drop_empty(.attributes)
 
-  if (!is.null(heading)) {
-    heading <- as.list(qto_heading(heading, level))
-  }
-
   qto_div(
-    .content = c(
-      heading,
-      dots_list(...)
-    ),
+    ...,
     class = class,
     id = id,
     .attributes = .attributes,
