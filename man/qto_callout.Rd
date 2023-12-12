@@ -45,10 +45,6 @@ pass to \code{\link[htmltools:css]{htmltools::css()}}.}
 
 \item{.attributes}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
-
-\item{fence}{If numeric, \code{fence} must be a minimum of 3 and sets the number
-of times the standard fence character ":" should be repeated. If character,
-\code{fence} is used as is.}
 }
 \description{
 Callouts are an excellent way to draw extra attention to certain concepts, or

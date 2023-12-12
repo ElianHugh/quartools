@@ -15,7 +15,7 @@
 qto_block <- function(..., sep = "", collapse = "", call = caller_env()) {
   check_dots_unnamed(call = call)
   structure(
-    paste0(..., sep = sep, collapse = collapse),
+    paste(..., sep = sep, collapse = collapse),
     class = c("knit_asis", "quarto_block")
   )
 }
@@ -30,9 +30,6 @@ qto_block <- function(..., sep = "", collapse = "", call = caller_env()) {
 #' @param collapse Passed to [base::paste0()] with `.content.`
 #' @param drop_empty If `TRUE`, drop empty values from `.content` or `...`
 #' @param drop_na If `TRUE`, drop `NA` values from `.content` or `...`
-#' @param fence If numeric, `fence` must be a minimum of 3 and sets the number
-#'   of times the standard fence character ":" should be repeated. If character,
-#'   `fence` is used as is.
 #' @inheritParams qto_block
 #' @seealso
 #' - [div()]
@@ -62,7 +59,6 @@ qto_div <- function(...,
                     .attributes = NULL,
                     .content = NULL,
                     collapse = "",
-                    fence = ":::",
                     drop_empty = TRUE,
                     drop_na = TRUE,
                     call = caller_env()) {
@@ -86,21 +82,26 @@ qto_div <- function(...,
   )
 
   qto_block(
-    qto_fence(fence, .attributes),
+    qto_fence(.attributes = .attributes),
     paste0(.content, collapse = collapse),
-    qto_fence(fence),
+    qto_fence(),
     call = call
   )
 }
 
+#' Create a fence for a div or code block
+#'
+#' @param fence If numeric, `fence` must be a minimum of 3 and sets the number
+#'   of times the standard fence character ":" should be repeated. If character,
+#'   `fence` is used as is.
 #' @noRd
-qto_fence <- function(fence = ":::", .attributes = NULL) {
+qto_fence <- function(fence = ":::", .attributes = NULL, .sep =  " ") {
   if (is.numeric(fence)) {
     stopifnot(fence > 2)
     fence <- strrep(":", fence)
   }
 
   paste0(
-    "\n", fence, " ", .attributes %||% "", "\n"
+    "\n", fence, .sep, .attributes %||% "", "\n"
   )
 }
