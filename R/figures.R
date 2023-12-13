@@ -30,7 +30,7 @@ qto_fig <- function(src,
       ref_prefix <- "#fig-"
     }
 
-    reference <- paste0(prefix, reference)
+    reference <- paste0(ref_prefix, reference)
   }
 
 
