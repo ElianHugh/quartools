@@ -3,21 +3,21 @@
 #' https://github.com/r-lib/rlang/blob/main/R/standalone-purrr.R
 #' @noRd
 map <- function(.x, .f, ...) {
-  .f <- as_function(.f, env = global_env())
-  lapply(.x, .f, ...)
+    .f <- as_function(.f, env = global_env())
+    lapply(.x, .f, ...)
 }
 
 #' @noRd
 map_chr <- function(.x, .f, ...) {
-  .rlang_purrr_map_mold(.x, .f, character(1), ...)
+    .rlang_purrr_map_mold(.x, .f, character(1L), ...)
 }
 
 #' @noRd
 .rlang_purrr_map_mold <- function(.x, .f, .mold, ...) {
-  .f <- as_function(.f, env = global_env())
-  out <- vapply(.x, .f, .mold, ..., USE.NAMES = FALSE)
-  names(out) <- names(.x)
-  out
+    .f <- as_function(.f, env = global_env())
+    out <- vapply(.x, .f, .mold, ..., USE.NAMES = FALSE)
+    names(out) <- names(.x)
+    out
 }
 
 #' Apply a function to each element of a vector and return Quarto block vector
@@ -39,8 +39,8 @@ map_chr <- function(.x, .f, ...) {
 #' @inheritParams rlang::args_error_context
 #' @examples
 #' qto_list <- map_qto(
-#'   list("This is a note.", "And this is a note.", "And this is a note"),
-#'   .type = "callout"
+#'     list("This is a note.", "And this is a note.", "And this is a note"),
+#'     .type = "callout"
 #' )
 #'
 #' qto_block(qto_list)
@@ -53,29 +53,29 @@ map_qto <- function(.x,
                     .sep = "",
                     .collapse = "",
                     .call = caller_env()) {
-  .type <- arg_match(.type, error_call = call)
+    .type <- arg_match(.type, error_call = call)
 
-  map(
-    .x,
-    \(x) {
-      .f <- .f %||% switch(.type,
-        block = qto_block,
-        div = qto_div,
-        callout = qto_callout,
-        heading = qto_heading
-      )
+    map(
+        .x,
+        \(x) {
+            .f <- .f %||% switch(.type,
+                block = qto_block,
+                div = qto_div,
+                callout = qto_callout,
+                heading = qto_heading
+            )
 
-      if (!rlang::is_function(.f)) {
-        .f <- rlang::as_function(.f, call = call)
-      }
+            if (!rlang::is_function(.f)) {
+                .f <- rlang::as_function(.f, call = call)
+            }
 
-      x <- .f(x, ...)
+            x <- .f(x, ...)
 
-      if (inherits(x, "quarto_block")) {
-        return(x)
-      }
+            if (inherits(x, "quarto_block")) {
+                return(x)
+            }
 
-      qto_block(x, sep = .sep, collapse = .collapse, call = .call)
-    }
-  )
+            qto_block(x, sep = .sep, collapse = .collapse, call = .call)
+        }
+    )
 }

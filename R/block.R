@@ -20,11 +20,11 @@
 #'
 #' @export
 qto_block <- function(..., sep = "", collapse = "", call = caller_env()) {
-  check_dots_unnamed(call = call)
-  structure(
-    paste(..., sep = sep, collapse = collapse),
-    class = c("knit_asis", "quarto_block")
-  )
+    check_dots_unnamed(call = call)
+    structure(
+        paste(..., sep = sep, collapse = collapse),
+        class = c("knit_asis", "quarto_block")
+    )
 }
 
 #' Create a Quarto div with optional classes, attributes, and other identifiers
@@ -67,31 +67,31 @@ qto_div <- function(...,
                     drop_empty = TRUE,
                     drop_na = TRUE,
                     call = caller_env()) {
-  check_dots_unnamed()
+    check_dots_unnamed()
 
-  .content <- .content %||% dots_list(...)
+    .content <- .content %||% dots_list(...)
 
-  if (drop_empty) {
-    .content <- list_drop_empty(.content)
-  }
+    if (drop_empty) {
+        .content <- list_drop_empty(.content)
+    }
 
-  if (drop_na) {
-    .content <- list_drop_na(.content)
-  }
+    if (drop_na) {
+        .content <- list_drop_na(.content)
+    }
 
-  .attributes <- qto_attributes(
-    id = id,
-    class = class,
-    css = css,
-    .attributes = .attributes
-  )
+    .attributes <- qto_attributes(
+        id = id,
+        class = class,
+        css = css,
+        .attributes = .attributes
+    )
 
-  qto_block(
-    qto_fence(.attributes = .attributes),
-    paste0(.content, collapse = collapse),
-    qto_fence(),
-    call = call
-  )
+    qto_block(
+        qto_fence(.attributes = .attributes),
+        paste0(.content, collapse = collapse),
+        qto_fence(),
+        call = call
+    )
 }
 
 #' Create a fence for a div or code block
@@ -101,12 +101,12 @@ qto_div <- function(...,
 #'   `fence` is used as is.
 #' @noRd
 qto_fence <- function(fence = ":::", .attributes = NULL, .sep = " ") {
-  if (is.numeric(fence)) {
-    stopifnot(fence > 2)
-    fence <- strrep(":", fence)
-  }
+    if (is.numeric(fence)) {
+        stopifnot(fence > 2L)
+        fence <- strrep(":", fence)
+    }
 
-  paste0(
-    "\n", fence, .sep, .attributes %||% "", "\n"
-  )
+    paste0(
+        "\n", fence, .sep, .attributes %||% "", "\n"
+    )
 }

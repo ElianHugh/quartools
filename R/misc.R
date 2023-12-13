@@ -10,10 +10,10 @@
 #' @return character vector of length 1
 #' @export
 as_markdown <- function(..., collapse = "") {
-  structure(
-    paste0(..., collapse = collapse),
-    class = c("knit_asis", "quarto_block")
-  )
+    structure(
+        paste0(..., collapse = collapse),
+        class = c("knit_asis", "quarto_block")
+    )
 }
 
 #' Markdown Apply
@@ -34,9 +34,9 @@ as_markdown <- function(..., collapse = "") {
 #' @seealso [base::lapply] [quartools::as_markdown]
 #' @export
 mdapply <- function(x, fun, ...) {
-  res <- do.call(
-    lapply,
-    args = list(X = x, FUN = fun, ... = ...)
-  )
-  as_markdown(res)
+    res <- do.call(
+        lapply,
+        args = list(X = x, FUN = fun, ... = ...)
+    )
+    as_markdown(res)
 }

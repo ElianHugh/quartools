@@ -7,12 +7,12 @@ NULL
 
 #' @rdname qto_basics
 #' @name qto_heading
-#' @param ... Heading text passed to [qto_block()].
+#' @param ... Heading text passed sto [qto_block()].
 #' @param level Heading level. Defaults to 1.
 #' @export
 qto_heading <- function(...,
-                        level = 1) {
-  qto_block(strrep("#", level), " ", ...)
+                        level = 1L) {
+    qto_block(strrep("#", level), " ", ...)
 }
 
 #' @rdname qto_basics
@@ -21,13 +21,13 @@ qto_heading <- function(...,
 #' @param before,after Text to insert before and after a horizontal rule.
 #' @export
 qto_hr <- function(rule = "-",
-                   length = 72,
+                   length = 72L,
                    before = "\n\n",
                    after = before) {
-  rule <- arg_match0(rule, c("-", "_", "*"))
-  qto_block(
-    before,
-    strrep(rule, length),
-    after
-  )
+    rule <- arg_match0(rule, c("-", "_", "*"))
+    qto_block(
+        before,
+        strrep(rule, length),
+        after
+    )
 }

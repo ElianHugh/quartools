@@ -14,11 +14,11 @@
 #'
 #' @export
 qto_span <- function(text, ..., .attributes = NULL) {
-  qto_block(
-    bracket(text),
-    qto_attributes(
-      ...,
-      .attributes = .attributes
+    qto_block(
+        bracket(text),
+        qto_attributes(
+            ...,
+            .attributes = .attributes
+        )
     )
-  )
 }

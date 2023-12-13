@@ -6,12 +6,12 @@
 \alias{qto_hr}
 \title{Basic formatting and markdown elements}
 \usage{
-qto_heading(..., level = 1)
+qto_heading(..., level = 1L)
 
-qto_hr(rule = "-", length = 72, before = "\\n\\n", after = before)
+qto_hr(rule = "-", length = 72L, before = "\\n\\n", after = before)
 }
 \arguments{
-\item{...}{Heading text passed to \code{\link[=qto_block]{qto_block()}}.}
+\item{...}{Heading text passed sto \code{\link[=qto_block]{qto_block()}}.}
 
 \item{level}{Heading level. Defaults to 1.}
 

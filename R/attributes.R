@@ -30,33 +30,33 @@ qto_attributes <- function(id = NULL,
                            .attributes = NULL,
                            .output = "embrace",
                            .drop_empty = TRUE) {
-  if (is_string(id) && !grepl("^#", id)) {
-    id <- paste0("#", id)
-  }
+    if (is_string(id) && !grepl("^#", id)) {
+        id <- paste0("#", id)
+    }
 
-  if (is_string(class) && !grepl("^\\.", class)) {
-    class <- paste0(".", class)
-  }
+    if (is_string(class) && !grepl("^\\.", class)) {
+        class <- paste0(".", class)
+    }
 
-  if (!is.null(css) && is_installed("htmltools")) {
-    css <- htmltools::css(!!!css)
-  }
+    if (!is.null(css) && is_installed("htmltools")) {
+        css <- htmltools::css(!!!css)
+    }
 
-  .attributes <- as_qto_attr(
-    ...,
-    .attributes = .attributes,
-    .drop_empty = .drop_empty,
-    .collapse = " "
-  )
+    .attributes <- as_qto_attr(
+        ...,
+        .attributes = .attributes,
+        .drop_empty = .drop_empty,
+        .collapse = " "
+    )
 
-  if (!is.null(c(id, class, css, .attributes))) {
-    .attributes <- paste0(c(id, class, css, .attributes), collapse = " ")
-  }
+    if (!is.null(c(id, class, css, .attributes))) {
+        .attributes <- paste0(c(id, class, css, .attributes), collapse = " ")
+    }
 
-  switch(.output,
-    embrace = embrace(.attributes),
-    .attributes
-  )
+    switch(.output,
+        embrace = embrace(.attributes),
+        .attributes
+    )
 }
 
 #' Helper function to create key-value attribute strings
@@ -71,32 +71,32 @@ as_qto_attr <- function(...,
                         .drop_empty = TRUE,
                         .drop_na = TRUE,
                         .replacement = NULL) {
-  .attributes <- .attributes %||% dots_list(...)
+    .attributes <- .attributes %||% dots_list(...)
 
-  if (.drop_empty) {
-    .attributes <- list_drop_empty(.attributes)
-  }
+    if (.drop_empty) {
+        .attributes <- list_drop_empty(.attributes)
+    }
 
-  if (is_empty(.attributes)) {
-    return(NULL)
-  }
+    if (is_empty(.attributes)) {
+        return(NULL)
+    }
 
-  .attributes <- list_drop_or_replace_na(
-    .attributes,
-    drop_na = .drop_na,
-    replacement = .replacement
-  )
-
-  if (is_named(.attributes)) {
-    .attributes <- paste0(
-      names(.attributes), op, qto_attr_values(.attributes),
-      collapse = .collapse
+    .attributes <- list_drop_or_replace_na(
+        .attributes,
+        drop_na = .drop_na,
+        replacement = .replacement
     )
-  } else {
-    .attributes <- paste0(.attributes, collapse = .collapse)
-  }
 
-  paste0(before, .attributes, after)
+    if (is_named(.attributes)) {
+        .attributes <- paste0(
+            names(.attributes), op, qto_attr_values(.attributes),
+            collapse = .collapse
+        )
+    } else {
+        .attributes <- paste0(.attributes, collapse = .collapse)
+    }
+
+    paste0(before, .attributes, after)
 }
 
 
@@ -104,23 +104,23 @@ as_qto_attr <- function(...,
 #'
 #' @noRd
 qto_attr_values <- function(values, mark = "'") {
-  vapply(
-    values,
-    \(x) {
-      if (is.logical(x)) {
-        return(tolower(x))
-      }
+    vapply(
+        values,
+        \(x) {
+            if (is.logical(x)) {
+                return(tolower(x))
+            }
 
-      if (grepl(r"{\b[0-9]+\.?[0-9]*%\b}", x)) {
-        mark <- ""
-      }
+            if (grepl(r"{\b[0-9]+\.?[0-9]*%\b}", x)) {
+                mark <- ""
+            }
 
-      if (is.character(x)) {
-        return(combine(x, mark, mark))
-      }
+            if (is.character(x)) {
+                return(combine(x, mark, mark))
+            }
 
-      as.character(x)
-    },
-    NA_character_
-  )
+            as.character(x)
+        },
+        NA_character_
+    )
 }

@@ -12,9 +12,9 @@ combine <- function(x,
                     after = before,
                     allow_empty = TRUE,
                     allow_null = TRUE) {
-  check_string(x, allow_empty = allow_empty, allow_null = allow_null)
+    check_string(x, allow_empty = allow_empty, allow_null = allow_null)
 
-  paste0(before, x %||% "", after)
+    paste0(before, x %||% "", after)
 }
 
 #' @noRd
@@ -23,7 +23,7 @@ embrace <- function(x,
                     after = "}",
                     allow_empty = TRUE,
                     allow_null = TRUE) {
-  combine(x, before, after, allow_empty, allow_null)
+    combine(x, before, after, allow_empty, allow_null)
 }
 
 #' @noRd
@@ -32,7 +32,7 @@ bracket <- function(x,
                     after = "]",
                     allow_empty = TRUE,
                     allow_null = TRUE) {
-  combine(x, before, after, allow_empty, allow_null)
+    combine(x, before, after, allow_empty, allow_null)
 }
 
 #' @noRd
@@ -41,23 +41,23 @@ parentheses <- function(x,
                         after = ")",
                         allow_empty = TRUE,
                         allow_null = TRUE) {
-  combine(x, before, after, allow_empty, allow_null)
+    combine(x, before, after, allow_empty, allow_null)
 }
 
 #' @noRd
 build_readme_qmd <- function(path = ".", quiet = TRUE, ...) {
-  if (path == ".") {
-    path <- file.path(getwd(), "README.qmd")
-  }
+    if (path == ".") {
+        path <- file.path(getwd(), "README.qmd")
+    }
 
-  if (file.exists(path)) {
-    check_installed("quarto")
+    if (file.exists(path)) {
+        check_installed("quarto")
 
-    quarto::quarto_render(
-      input = path,
-      output_file = "README.md",
-      quiet = quiet,
-      ...
-    )
-  }
+        quarto::quarto_render(
+            input = path,
+            output_file = "README.md",
+            quiet = quiet,
+            ...
+        )
+    }
 }

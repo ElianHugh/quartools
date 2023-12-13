@@ -38,35 +38,35 @@ qto_callout <- function(...,
                         class = NULL,
                         .attributes = NULL,
                         call = caller_env()) {
-  type <- arg_match(type)
-  class <- paste0("callout-", type)
+    type <- arg_match(type)
+    class <- paste0("callout-", type)
 
-  if (!is.null(appearance)) {
-    appearance <- arg_match0(
-      appearance,
-      c("default", "simple", "minimal")
+    if (!is.null(appearance)) {
+        appearance <- arg_match0(
+            appearance,
+            c("default", "simple", "minimal")
+        )
+    }
+
+    .attributes <- c(
+        list(
+            "collapse" = collapse,
+            "appearance" = appearance,
+            "icon" = icon
+        ),
+        as.list(.attributes),
+        list(
+            "title" = title
+        )
     )
-  }
 
-  .attributes <- c(
-    list(
-      "collapse" = collapse,
-      "appearance" = appearance,
-      "icon" = icon
-    ),
-    as.list(.attributes),
-    list(
-      "title" = title
+    .attributes <- list_drop_empty(.attributes)
+
+    qto_div(
+        ...,
+        class = class,
+        id = id,
+        .attributes = .attributes,
+        call = call
     )
-  )
-
-  .attributes <- list_drop_empty(.attributes)
-
-  qto_div(
-    ...,
-    class = class,
-    id = id,
-    .attributes = .attributes,
-    call = call
-  )
 }

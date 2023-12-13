@@ -5,7 +5,7 @@
 #' @inheritParams combine
 #' @export
 qto_shortcode <- function(x, before = "{{< ", after = " >}}", ...) {
-  qto_block(combine(x, before, after), ...)
+    qto_block(combine(x, before, after), ...)
 }
 
 #' Videos <https://quarto.org/docs/authoring/markdown-basics.html#videos>
@@ -18,8 +18,8 @@ qto_shortcode <- function(x, before = "{{< ", after = " >}}", ...) {
 #'
 #' @export
 qto_video <- function(src) {
-  check_src(x = src)
-  qto_shortcode(paste0("video ", src))
+    check_src(x = src)
+    qto_shortcode(paste0("video ", src))
 }
 
 #' Page breaks <https://quarto.org/docs/authoring/markdown-basics.html#page-breaks>
@@ -31,7 +31,7 @@ qto_video <- function(src) {
 #'
 #' @export
 qto_pagebreak <- function() {
-  qto_shortcode("pagebreak")
+    qto_shortcode("pagebreak")
 }
 
 #' Keyboard shortcuts <https://quarto.org/docs/authoring/markdown-basics.html#keyboard-shortcuts>
@@ -51,14 +51,14 @@ qto_pagebreak <- function() {
 #'
 #' @export
 qto_kbd <- function(...) {
-  shortcut <- dots_list(...)
+    shortcut <- dots_list(...)
 
-  if (is_named(shortcut)) {
-    shortcut <- lapply(shortcut, paste0, collapse = "-")
-    shortcut <- paste0(names(shortcut), "=", shortcut, collapse = " ")
-  } else {
-    shortcut <- paste0(shortcut, collapse = "-")
-  }
+    if (is_named(shortcut)) {
+        shortcut <- lapply(shortcut, paste0, collapse = "-")
+        shortcut <- paste0(names(shortcut), "=", shortcut, collapse = " ")
+    } else {
+        shortcut <- paste0(shortcut, collapse = "-")
+    }
 
-  qto_shortcode(paste0("kbd ", shortcut))
+    qto_shortcode(paste0("kbd ", shortcut))
 }

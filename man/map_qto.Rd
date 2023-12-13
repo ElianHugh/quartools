@@ -42,8 +42,8 @@ list of quarto block objects.
 }
 \examples{
 qto_list <- map_qto(
-  list("This is a note.", "And this is a note.", "And this is a note"),
-  .type = "callout"
+    list("This is a note.", "And this is a note.", "And this is a note"),
+    .type = "callout"
 )
 
 qto_block(qto_list)

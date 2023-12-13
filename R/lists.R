@@ -40,28 +40,28 @@ qto_dl <- function(...,
                    .drop_na = FALSE,
                    .sep = "\n",
                    .replacement = "") {
-  if (!is.null(.term) && !is.null(.definition)) {
-    .list <- .list %||% set_names(.definition, .term)
-  }
+    if (!is.null(.term) && !is.null(.definition)) {
+        .list <- .list %||% set_names(.definition, .term)
+    }
 
-  .list <- list_drop_or_replace_na(
-    .list %||% list2(...),
-    drop_na = .drop_na,
-    replacement = .replacement
-  )
+    .list <- list_drop_or_replace_na(
+        .list %||% list2(...),
+        drop_na = .drop_na,
+        replacement = .replacement
+    )
 
-  # FIXME: Unsure why this is needed
-  if (has_length(.list, 1)) {
-    .list <- .list[1]
-  }
+    # FIXME: Unsure why this is needed
+    if (has_length(.list, 1L)) {
+        .list <- .list[1L]
+    }
 
-  qto_block(
-    names(.list),
-    .sep,
-    "\n:   ",
-    .list,
-    collapse = "\n\n"
-  )
+    qto_block(
+        names(.list),
+        .sep,
+        "\n:   ",
+        .list,
+        collapse = "\n\n"
+    )
 }
 
 #' Create ordered or unordered lists for Quarto
@@ -92,13 +92,13 @@ NULL
 #' @rdname qto_list
 #' @name qto_ol
 #' @export
-qto_ol <- function(.list = NULL, ..., level = 1, symbol = "1.") {
-  qto_li(
-    .list = .list,
-    ...,
-    level = level,
-    symbol = symbol
-  )
+qto_ol <- function(.list = NULL, ..., level = 1L, symbol = "1.") {
+    qto_li(
+        .list = .list,
+        ...,
+        level = level,
+        symbol = symbol
+    )
 }
 
 #' @rdname qto_list
@@ -108,30 +108,30 @@ qto_ol <- function(.list = NULL, ..., level = 1, symbol = "1.") {
 #' @param sep Separator character between list items passed to [qto_block()].
 #'   Defaults to "". Set to `"\n"` for wider list spacing.
 #' @export
-qto_li <- function(.list = NULL, ..., level = 1, symbol = "*", sep = "") {
-  .list <- .list %||% rlang::list2(...)
+qto_li <- function(.list = NULL, ..., level = 1L, symbol = "*", sep = "") {
+    .list <- .list %||% rlang::list2(...)
 
-  check_character(symbol)
+    check_character(symbol)
 
-  qto_block(
-    "\n",
-    paste0(
-      indent_level(level),
-      symbol, " ",
-      .list
-    ),
-    sep = sep
-  )
+    qto_block(
+        "\n",
+        paste0(
+            indent_level(level),
+            symbol, " ",
+            .list
+        ),
+        sep = sep
+    )
 }
 
 #' Helper function to set indent based on level
 #'
 #' @noRd
-indent_level <- function(level = 1) {
-  if (level == 1) {
-    return("")
-  }
+indent_level <- function(level = 1L) {
+    if (level == 1L) {
+        return("")
+    }
 
-  level <- level - 1
-  strrep(" ", 4 * level)
+    level <- level - 1L
+    strrep(" ", 4L * level)
 }

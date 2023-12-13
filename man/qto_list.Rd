@@ -6,9 +6,9 @@
 \alias{qto_li}
 \title{Create ordered or unordered lists for Quarto}
 \usage{
-qto_ol(.list = NULL, ..., level = 1, symbol = "1.")
+qto_ol(.list = NULL, ..., level = 1L, symbol = "1.")
 
-qto_li(.list = NULL, ..., level = 1, symbol = "*", sep = "")
+qto_li(.list = NULL, ..., level = 1L, symbol = "*", sep = "")
 }
 \arguments{
 \item{.list}{A vector of list items. Optional if items are passed to \code{...}.}
