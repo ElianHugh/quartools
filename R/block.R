@@ -1,11 +1,18 @@
 #' Create a block of text to render as Markdown text in Quarto
 #'
-#' [qto_block()] based on [as_markdown()]
+#' [qto_block()] passes the input to [paste()] and assigns the classes
+#' "knit_asis" and "quarto_block".
 #'
 #' @param ... dots to convert to character vector
-#' @inheritParams base::paste0
+#' @inheritParams base::paste
+#' @inheritParams rlang::args_error_context
 #' @examples
-#' as_markdown(c("Hello world!"))
+#' qto_block("Hello world!")
+#'
+#' qto_block("Hello", "world!", sep = " ")
+#'
+#' qto_block("- ", LETTERS[1:4], collapse = "\n")
+#'
 #' @return character vector of length 1
 #' @seealso
 #' - [as_markdown()]
@@ -32,11 +39,10 @@ qto_block <- function(..., sep = "", collapse = "", call = caller_env()) {
 #' @param drop_na If `TRUE`, drop `NA` values from `.content` or `...`
 #' @inheritParams qto_block
 #' @seealso
-#' - [div()]
-#' - [qto_callout_block()]
+#' - [qto_callout()]
 #' @examples
 #'
-#' # div with an ID
+#' # div with an class
 #' qto_div(
 #'   "This content can be styled with a border",
 #'   class = "border"
@@ -47,8 +53,7 @@ qto_block <- function(..., sep = "", collapse = "", call = caller_env()) {
 #'   qto_div("Here is a warning.", class = "warning"),
 #'   "More content.",
 #'   id = "special",
-#'   class = "sidebar",
-#'   fence = 5
+#'   class = "sidebar"
 #' )
 #'
 #' @export

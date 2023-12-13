@@ -38,13 +38,18 @@ ignored. If \code{.content} is \code{NULL}, it is set as all values passed to \c
 \item{drop_empty}{If \code{TRUE}, drop empty values from \code{.content} or \code{...}}
 
 \item{drop_na}{If \code{TRUE}, drop \code{NA} values from \code{.content} or \code{...}}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \description{
 \url{https://quarto.org/docs/authoring/markdown-basics.html#divs-and-spans}
 }
 \examples{
 
-# div with an ID
+# div with an class
 qto_div(
   "This content can be styled with a border",
   class = "border"
@@ -55,14 +60,12 @@ qto_div(
   qto_div("Here is a warning.", class = "warning"),
   "More content.",
   id = "special",
-  class = "sidebar",
-  fence = 5
+  class = "sidebar"
 )
 
 }
 \seealso{
 \itemize{
-\item \code{\link[=div]{div()}}
-\item \code{\link[=qto_callout_block]{qto_callout_block()}}
+\item \code{\link[=qto_callout]{qto_callout()}}
 }
 }
