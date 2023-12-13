@@ -1,4 +1,12 @@
-#' @noRd
+#' Combine a string with text before and after
+#'
+#' @param x An input string.
+#' @param before,after Text to insert before and after the supplied string.
+#' @param allow_empty If `TRUE`, allow empty string ("") values as input. If
+#'   `FALSE`, error on empty string inputs.
+#' @param allow_null If `TRUE`, allow `NULL` values as input (replaced with an
+#'   empty string ""). If `FALSE`, error on `NULL` inputs.
+#' @keywords internal
 combine <- function(x,
                     before = "",
                     after = before,
@@ -38,16 +46,18 @@ parentheses <- function(x,
 
 #' @noRd
 build_readme_qmd <- function(path = ".", quiet = TRUE, ...) {
-  check_installed("quarto")
+  if (path == ".") {
+    path <- file.path(getwd(), "README.qmd")
+  }
 
-  qmd_path <- file.path(path, "README.qmd")
+  if (file.exists(path)) {
+    check_installed("quarto")
 
-  if (is_installed("quarto") && file.exists(qmd_path)) {
     quarto::quarto_render(
-      input = qmd_path,
+      input = path,
       output_file = "README.md",
       quiet = quiet,
       ...
-      )
+    )
   }
 }
