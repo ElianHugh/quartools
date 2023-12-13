@@ -4,7 +4,15 @@
 \alias{map_qto}
 \title{Apply a function to each element of a vector and return Quarto block vector}
 \usage{
-map_qto(.x, .f = NULL, ..., .type = c("block", "div", "callout", "heading"))
+map_qto(
+  .x,
+  .f = NULL,
+  ...,
+  .type = c("block", "div", "callout", "heading"),
+  .sep = "",
+  .collapse = "",
+  .call = caller_env()
+)
 }
 \arguments{
 \item{.x}{An input vector.}
@@ -12,17 +20,27 @@ map_qto(.x, .f = NULL, ..., .type = c("block", "div", "callout", "heading"))
 \item{.f}{Optional function to apply to each element. If function does not
 return a "quarto_block" class object, the output is passed to \code{\link[=qto_block]{qto_block()}}}
 
+\item{...}{Additional parameters passed to function defined by \code{.f}.}
+
 \item{.type}{If .f is \code{NULL}, type is used to define the function applied to
 each element of the vector. Options include "block", "div", "callout", or
 "heading".}
+
+\item{.sep, .collapse}{Additional parameters passed to \code{\link[=qto_block]{qto_block()}} if .f
+does not return a quarto block class object. Ignored if .f does return a
+quarto block class object.}
 }
 \description{
-Apply a function to each element of a vector and return Quarto block vector
+\code{\link[=map_qto]{map_qto()}} loops a list over a package function defined by .type or a custom
+function that returns a quarto block output. This function always returns a
+list of quarto block objects.
 }
 \examples{
-map_qto(
+qto_list <- map_qto(
   list("This is a note.", "And this is a note.", "And this is a note"),
   .type = "callout"
 )
+
+qto_block(qto_list)
 
 }
