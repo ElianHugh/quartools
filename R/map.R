@@ -36,6 +36,7 @@ map_chr <- function(.x, .f, ...) {
 #' @param .sep,.collapse Additional parameters passed to [qto_block()] if .f
 #'   does not return a quarto block class object. Ignored if .f does return a
 #'   quarto block class object.
+#' @inheritParams rlang::args_error_context
 #' @examples
 #' qto_list <- map_qto(
 #'   list("This is a note.", "And this is a note.", "And this is a note"),

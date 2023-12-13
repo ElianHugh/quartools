@@ -29,6 +29,11 @@ each element of the vector. Options include "block", "div", "callout", or
 \item{.sep, .collapse}{Additional parameters passed to \code{\link[=qto_block]{qto_block()}} if .f
 does not return a quarto block class object. Ignored if .f does return a
 quarto block class object.}
+
+\item{.call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \description{
 \code{\link[=map_qto]{map_qto()}} loops a list over a package function defined by .type or a custom

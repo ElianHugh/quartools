@@ -20,6 +20,9 @@ are not yet supported.}
 
 \item{symbol}{Symbol to use for list bullet. Use "(@)" to create a list where
 numbering continues after interruption.}
+
+\item{sep}{Separator character between list items passed to \code{\link[=qto_block]{qto_block()}}.
+Defaults to "". Set to \code{"\\n"} for wider list spacing.}
 }
 \description{
 \code{\link[=qt_ol]{qt_ol()}} created ordered lists and \code{\link[=qt_li]{qt_li()}} creates unordered lists. See

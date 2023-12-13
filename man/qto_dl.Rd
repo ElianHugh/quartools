@@ -28,6 +28,10 @@ One of \code{.list}, \code{.term} and \code{.definition}, or \code{...} must be 
 
 \item{.drop_na}{If \code{TRUE}, drop \code{NA} values from the supplied list.}
 
+\item{.sep}{Added separator string between terms and definitions. Defaults to
+\code{"\\n"} for wider list spacing. If set to \code{""}, the definition list uses a
+tighter spacing.}
+
 \item{.replacement}{If not \code{NULL}, replace NA values from the supplied list
 with the value of replacement.}
 }

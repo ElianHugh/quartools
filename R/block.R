@@ -100,7 +100,7 @@ qto_div <- function(...,
 #'   of times the standard fence character ":" should be repeated. If character,
 #'   `fence` is used as is.
 #' @noRd
-qto_fence <- function(fence = ":::", .attributes = NULL, .sep =  " ") {
+qto_fence <- function(fence = ":::", .attributes = NULL, .sep = " ") {
   if (is.numeric(fence)) {
     stopifnot(fence > 2)
     fence <- strrep(":", fence)

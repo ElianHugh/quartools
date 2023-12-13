@@ -12,6 +12,7 @@ qto_shortcode <- function(x, before = "{{< ", after = " >}}", ...) {
 #'
 #' @rdname qto_shortcode
 #' @name qto_pagebreak
+#' @param src For [qto_video()], a URL with the video source.
 #' @examples
 #' qto_video("https://www.youtube.com/embed/wo9vZccmqwc")
 #'

@@ -19,15 +19,37 @@ qto_fig(
 )
 }
 \arguments{
+\item{src}{Figure file path or URL.}
+
+\item{caption}{Figure caption.}
+
+\item{alt}{Figure alt text.}
+
+\item{reference}{Figure reference. "fig-" prefix is optional.}
+
+\item{align, pos, width, height}{Figure alignment, position, width, and height.}
+
+\item{title}{Figure title.}
+
+\item{...}{Additional attributes passed to attributes argument of
+\code{\link[=qto_fig_span]{qto_fig_span()}}.}
+
 \item{allow_missing}{If \code{FALSE}, error if src is not an existing file or a
 valid URL. URLs are not checked if they work.}
 }
 \description{
-\url{https://quarto.org/docs/authoring/figures.html}
+\code{\link[=qto_fig]{qto_fig()}} creates Markdown formatting to insert a figure or image. Learn
+more about figure formatting options in the Quarto documentation:
+\url{https://quarto.org/docs/authoring/figures.html} Note that LaTeX output
+formats may not support external images:
+\url{https://tex.stackexchange.com/questions/5433/can-i-use-an-image-located-on-the-web-in-a-latex-document}
 }
 \examples{
 qto_fig("image.jpeg", "Image caption", alt = "Image alt text")
 
 qto_fig("graphic.pdf", title = "Title of the graphic")
 
+}
+\seealso{
+\code{\link[knitr:include_graphics]{knitr::include_graphics()}}
 }

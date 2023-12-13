@@ -22,6 +22,8 @@ qto_kbd(...)
 
 \item{...}{For \code{\link[=qto_kbd]{qto_kbd()}}, a set of strings to combine with "-" or a named
 set of attributes where names are one of "mac", "win", or "linux".}
+
+\item{src}{For \code{\link[=qto_video]{qto_video()}}, a URL with the video source.}
 }
 \description{
 \code{\link[=qto_shortcode]{qto_shortcode()}} creates a shortcode based on an input string.

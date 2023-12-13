@@ -10,6 +10,9 @@
 #'   terms as names and definitions as values. Ignored if `.list` is supplied.
 #' @param .list If `.list` is supplied, any values passed to `...` are ignored.
 #'   One of `.list`, `.term` and `.definition`, or `...` must be supplied.
+#' @param .sep Added separator string between terms and definitions. Defaults to
+#'   `"\n"` for wider list spacing. If set to `""`, the definition list uses a
+#'   tighter spacing.
 #' @inheritParams list_drop_or_replace_na
 #' @aliases qto_definition_list
 #' @seealso
@@ -88,6 +91,8 @@ qto_ol <- function(.list = NULL, ..., level = 1, symbol = "1.") {
 #' @name qto_li
 #' @param symbol Symbol to use for list bullet. Use "(@)" to create a list where
 #'   numbering continues after interruption.
+#' @param sep Separator character between list items passed to [qto_block()].
+#'   Defaults to "". Set to `"\n"` for wider list spacing.
 #' @export
 qto_li <- function(.list = NULL, ..., level = 1, symbol = "*", sep = "") {
   .list <- .list %||% rlang::list2(...)
