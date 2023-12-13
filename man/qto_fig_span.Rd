@@ -14,14 +14,16 @@ qto_fig_span(src, caption = NULL, ...)
 \item{...}{
   Arguments passed on to \code{\link[=qto_attributes]{qto_attributes}}
   \describe{
-    \item{\code{id}}{Div or span identifier}
-    \item{\code{class}}{Div or span class}
+    \item{\code{id}}{Div or span identifier. If \code{id} does not start with \code{"."}, the
+period character is applied as a prefix.}
+    \item{\code{class}}{Div or span class. If \code{class} does not start with \code{"#"}, the
+hash character is applied as a prefix.}
     \item{\code{css}}{If \code{{htmltools}} is installed, a list of css style attributes to
 pass to \code{\link[htmltools:css]{htmltools::css()}}.}
     \item{\code{.attributes}}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
-    \item{\code{.output}}{Ouput type. If "embrace", the returned attributes are enclosed
-in curley brackets.}
+    \item{\code{.output}}{Output type. If "embrace", the returned attributes are
+enclosed in curly brackets.}
     \item{\code{.drop_empty}}{If \code{TRUE}, empty attributes are dropped.}
   }}
 }

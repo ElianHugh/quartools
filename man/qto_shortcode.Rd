@@ -15,14 +15,16 @@ qto_pagebreak()
 
 qto_kbd(...)
 }
+\arguments{
+\item{x}{An input string.}
+
+\item{before, after}{Text to insert before and after the supplied string.}
+
+\item{...}{For \code{\link[=qto_kbd]{qto_kbd()}}, a set of strings to combine with "-" or a named
+set of attributes where names are one of "mac", "win", or "linux".}
+}
 \description{
-Create a Quarto shortcode
-
-Videos \url{https://quarto.org/docs/authoring/markdown-basics.html#videos}
-
-Page breaks \url{https://quarto.org/docs/authoring/markdown-basics.html#page-breaks}
-
-Keyboard shortcuts \url{https://quarto.org/docs/authoring/markdown-basics.html#keyboard-shortcuts}
+\code{\link[=qto_shortcode]{qto_shortcode()}} creates a shortcode based on an input string.
 }
 \examples{
 qto_video("https://www.youtube.com/embed/wo9vZccmqwc")

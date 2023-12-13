@@ -10,6 +10,8 @@
 #'   <https://quarto.org/docs/authoring/callouts.html#appearance>
 #' @param collapse If `TRUE`, create a folded callout. <https://quarto.org/docs/authoring/callouts.html#collapse>
 #' @param icon If `FALSE`, create a callout with an icon. <https://quarto.org/docs/authoring/callouts.html#icons>
+#' @param title Title attribute. Works the same as included a level 2 heading
+#'   before the body of the callout contents.
 #' @inheritParams qto_div
 #' @inheritDotParams qto_div
 #' @examples

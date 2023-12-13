@@ -1,13 +1,19 @@
 #' Create an attribute string for a div or span
 #'
-#' @param id Div or span identifier
-#' @param class Div or span class
+#' [qto_attributes()] creates an attribute string used by [qto_div()],
+#' [qto_span()], or [qto_fig_span()].
+#'
+#' @param ... Optional named attributes.
+#' @param id Div or span identifier. If `id` does not start with `"."`, the
+#'   period character is applied as a prefix.
+#' @param class Div or span class. If `class` does not start with `"#"`, the
+#'   hash character is applied as a prefix.
 #' @param css If `{htmltools}` is installed, a list of css style attributes to
 #'   pass to [htmltools::css()].
 #' @param .attributes Optional list of attributes. If supplied, any attributes
 #'   passed to `...` are ignored.
-#' @param .output Ouput type. If "embrace", the returned attributes are enclosed
-#'   in curley brackets.
+#' @param .output Output type. If "embrace", the returned attributes are
+#'   enclosed in curly brackets.
 #' @param .drop_empty If `TRUE`, empty attributes are dropped.
 #' @examples
 #' qto_attributes(id = "id", class = "class")

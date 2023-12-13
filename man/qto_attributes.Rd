@@ -15,23 +15,28 @@ qto_attributes(
 )
 }
 \arguments{
-\item{id}{Div or span identifier}
+\item{id}{Div or span identifier. If \code{id} does not start with \code{"."}, the
+period character is applied as a prefix.}
 
-\item{class}{Div or span class}
+\item{class}{Div or span class. If \code{class} does not start with \code{"#"}, the
+hash character is applied as a prefix.}
 
 \item{css}{If \code{{htmltools}} is installed, a list of css style attributes to
 pass to \code{\link[htmltools:css]{htmltools::css()}}.}
 
+\item{...}{Optional named attributes.}
+
 \item{.attributes}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
 
-\item{.output}{Ouput type. If "embrace", the returned attributes are enclosed
-in curley brackets.}
+\item{.output}{Output type. If "embrace", the returned attributes are
+enclosed in curly brackets.}
 
 \item{.drop_empty}{If \code{TRUE}, empty attributes are dropped.}
 }
 \description{
-Create an attribute string for a div or span
+\code{\link[=qto_attributes]{qto_attributes()}} creates an attribute string used by \code{\link[=qto_div]{qto_div()}},
+\code{\link[=qto_span]{qto_span()}}, or \code{\link[=qto_fig_span]{qto_fig_span()}}.
 }
 \examples{
 qto_attributes(id = "id", class = "class")

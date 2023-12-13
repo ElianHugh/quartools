@@ -1,5 +1,8 @@
 #' Create a Quarto shortcode
 #'
+#' [qto_shortcode()] creates a shortcode based on an input string.
+#'
+#' @inheritParams combine
 #' @export
 qto_shortcode <- function(x, before = "{{< ", after = " >}}", ...) {
   qto_block(combine(x, before, after), ...)
@@ -33,6 +36,8 @@ qto_pagebreak <- function() {
 #' Keyboard shortcuts <https://quarto.org/docs/authoring/markdown-basics.html#keyboard-shortcuts>
 #'
 #' @rdname qto_shortcode
+#' @param ... For [qto_kbd()], a set of strings to combine with "-" or a named
+#'   set of attributes where names are one of "mac", "win", or "linux".
 #' @name qto_kbd
 #' @examples
 #' qto_kbd("Shift", "Ctrl", "P")
