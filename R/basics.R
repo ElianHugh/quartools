@@ -24,6 +24,7 @@ qto_hr <- function(rule = "-",
                    length = 72,
                    before = "\n\n",
                    after = before) {
+  rule <- arg_match0(rule, c("-", "_", "*"))
   qto_block(
     before,
     strrep(rule, length),
