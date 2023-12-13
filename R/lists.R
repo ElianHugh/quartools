@@ -14,7 +14,21 @@
 #'   `"\n"` for wider list spacing. If set to `""`, the definition list uses a
 #'   tighter spacing.
 #' @inheritParams list_drop_or_replace_na
-#' @aliases qto_definition_list
+#' @examples
+#' qto_dl(
+#'   "Quarto" = "An open-source scientific and technical publishing system"
+#' )
+#'
+#' qto_dl(
+#'   .term = "Quarto",
+#'   .definition = "An open-source scientific and technical publishing system"
+#' )
+#'
+#' qto_dl(
+#'   .list = list("Quarto" = "An open-source scientific and technical publishing system")
+#' )
+
+#'
 #' @seealso
 #' - [qto_ol()]
 #' - [qto_li()]
@@ -52,12 +66,12 @@ qto_dl <- function(...,
 
 #' Create ordered or unordered lists for Quarto
 #'
-#' [qt_ol()] created ordered lists and [qt_li()] creates unordered lists. See
+#' [qto_ol()] created ordered lists and [qto_li()] creates unordered lists. See
 #' the Quarto documentation for more information on lists:
 #' <https://quarto.org/docs/authoring/markdown-basics.html#lists>
 #'
 #' @param .list A vector of list items. Optional if items are passed to `...`.
-#' @param ... Items to use as list items.
+#' @param ... Items to use as list items. Ignored if .list is supplied.
 #' @param level Indent level of list. Nested levels in a single function call
 #'   are not yet supported.
 #' @seealso [qto_dl()]

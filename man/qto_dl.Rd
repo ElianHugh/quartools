@@ -2,7 +2,6 @@
 % Please edit documentation in R/lists.R
 \name{qto_dl}
 \alias{qto_dl}
-\alias{qto_definition_list}
 \title{Create a definition list}
 \usage{
 qto_dl(
@@ -38,6 +37,21 @@ with the value of replacement.}
 \description{
 See the Quarto documentation for more information on lists:
 \url{https://quarto.org/docs/authoring/markdown-basics.html#lists}
+}
+\examples{
+qto_dl(
+  "Quarto" = "An open-source scientific and technical publishing system"
+)
+
+qto_dl(
+  .term = "Quarto",
+  .definition = "An open-source scientific and technical publishing system"
+)
+
+qto_dl(
+  .list = list("Quarto" = "An open-source scientific and technical publishing system")
+)
+
 }
 \seealso{
 \itemize{

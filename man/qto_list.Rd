@@ -13,7 +13,7 @@ qto_li(.list = NULL, ..., level = 1, symbol = "*", sep = "")
 \arguments{
 \item{.list}{A vector of list items. Optional if items are passed to \code{...}.}
 
-\item{...}{Items to use as list items.}
+\item{...}{Items to use as list items. Ignored if .list is supplied.}
 
 \item{level}{Indent level of list. Nested levels in a single function call
 are not yet supported.}
@@ -25,7 +25,7 @@ numbering continues after interruption.}
 Defaults to "". Set to \code{"\\n"} for wider list spacing.}
 }
 \description{
-\code{\link[=qt_ol]{qt_ol()}} created ordered lists and \code{\link[=qt_li]{qt_li()}} creates unordered lists. See
+\code{\link[=qto_ol]{qto_ol()}} created ordered lists and \code{\link[=qto_li]{qto_li()}} creates unordered lists. See
 the Quarto documentation for more information on lists:
 \url{https://quarto.org/docs/authoring/markdown-basics.html#lists}
 }
