@@ -75,20 +75,20 @@ as_qto_attr <- function(...,
     return(NULL)
   }
 
-  stopifnot(
-    is_named(.attributes)
-  )
-
   .attributes <- list_drop_or_replace_na(
     .attributes,
     drop_na = .drop_na,
     replacement = .replacement
   )
 
-  .attributes <- paste0(
-    names(.attributes), op, qto_attr_values(.attributes),
-    collapse = .collapse
-  )
+  if (is_named(.attributes)) {
+    .attributes <- paste0(
+      names(.attributes), op, qto_attr_values(.attributes),
+      collapse = .collapse
+    )
+  } else {
+    .attributes <- paste0(.attributes, collapse = .collapse)
+  }
 
   paste0(before, .attributes, after)
 }
@@ -104,11 +104,15 @@ qto_attr_values <- function(values, mark = "'") {
       if (is.logical(x)) {
         return(tolower(x))
       }
-      # FIXME: Percent values are enclosed in quotes, e.g. 60%, but should not
-      # be
+
+      if (grepl(r"{\b[0-9]+\.?[0-9]*%\b}", x)) {
+        mark <- ""
+      }
+
       if (is.character(x)) {
         return(combine(x, mark, mark))
       }
+
       as.character(x)
     },
     NA_character_
