@@ -15,11 +15,11 @@ qto_attributes(
 )
 }
 \arguments{
-\item{id}{Div or span identifier. If \code{id} does not start with \code{"."}, the
-period character is applied as a prefix.}
-
-\item{class}{Div or span class. If \code{class} does not start with \code{"#"}, the
+\item{id}{Div or span identifier. If \code{id} does not start with \code{"#"}, the
 hash character is applied as a prefix.}
+
+\item{class}{Div or span class. If \code{class} does not start with \code{"."}, the
+period character is applied as a prefix.}
 
 \item{css}{If \code{{htmltools}} is installed, a list of css style attributes to
 pass to \code{\link[htmltools:css]{htmltools::css()}}.}

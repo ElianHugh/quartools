@@ -42,11 +42,11 @@ pass to \code{\link[htmltools:css]{htmltools::css()}}.}
 \item{title}{Title attribute. Works the same as included a level 2 heading
 before the body of the callout contents.}
 
-\item{id}{Div or span identifier. If \code{id} does not start with \code{"."}, the
-period character is applied as a prefix.}
-
-\item{class}{Div or span class. If \code{class} does not start with \code{"#"}, the
+\item{id}{Div or span identifier. If \code{id} does not start with \code{"#"}, the
 hash character is applied as a prefix.}
+
+\item{class}{Div or span class. If \code{class} does not start with \code{"."}, the
+period character is applied as a prefix.}
 
 \item{.attributes}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
