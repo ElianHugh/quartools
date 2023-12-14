@@ -31,3 +31,4 @@ mdapply(my_list, div)
 \seealso{
 \link[base:lapply]{base::lapply} \link{as_markdown}
 }
+\keyword{internal}

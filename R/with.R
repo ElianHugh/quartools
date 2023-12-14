@@ -4,7 +4,7 @@ handle_extensions <- function(extension, valid_extensions) {
         extension_string <- paste0("-", extension)
         return(extension_string)
     }
-    return("")
+    ""
 }
 
 #' Temporarily modify page layout

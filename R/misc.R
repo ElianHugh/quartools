@@ -8,6 +8,7 @@
 #' @examples
 #' as_markdown(c("Hello world!"))
 #' @return character vector of length 1
+#' @keywords internal
 #' @export
 as_markdown <- function(..., collapse = "") {
     structure(
@@ -32,6 +33,7 @@ as_markdown <- function(..., collapse = "") {
 #' mdapply(my_list, div)
 #' @return character vector of length 1
 #' @seealso [base::lapply] [quartools::as_markdown]
+#' @keywords internal
 #' @export
 mdapply <- function(x, fun, ...) {
     res <- do.call(

@@ -14,18 +14,19 @@
 #'
 #' # div calls can be nested
 #' div(
-#'  div("Hello world!"),
-#'  attr = ".my_class"
+#'   div("Hello world!"),
+#'   attr = ".my_class"
 #' )
 #' @return character vector of length 1
 #' @family elements
+#' @keywords internal
 #' @export
 div <- function(..., attr = NULL) {
     rlang::check_dots_unnamed()
 
     template_string <- "\n\n:::{%s}\n\n%s\n\n:::\n"
     dots <- rlang::dots_list(...)
-    attribs <-  paste0(attr %||% "", collapse = " ")
+    attribs <- paste0(attr %||% "", collapse = " ")
     content <- paste0(dots, collapse = "\n\n")
 
     structure(
@@ -47,13 +48,14 @@ div <- function(..., attr = NULL) {
 #' span("Hello world!", attr = ".bold")
 #' @return character vector of length 1
 #' @family elements
+#' @keywords internal
 #' @export
 span <- function(..., attr = NULL) {
     rlang::check_dots_unnamed()
 
     template_string <- "[%s]{%s}"
     dots <- rlang::dots_list(...)
-    attribs <-  paste0(attr %||% "", collapse = " ")
+    attribs <- paste0(attr %||% "", collapse = " ")
     content <- paste0(dots, collapse = " ")
 
     structure(

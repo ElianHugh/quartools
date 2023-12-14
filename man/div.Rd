@@ -28,8 +28,8 @@ div("Hello world!", attr = ".callout-tip")
 
 # div calls can be nested
 div(
- div("Hello world!"),
- attr = ".my_class"
+  div("Hello world!"),
+  attr = ".my_class"
 )
 }
 \seealso{
@@ -37,3 +37,4 @@ Other elements:
 \code{\link{span}()}
 }
 \concept{elements}
+\keyword{internal}

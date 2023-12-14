@@ -1,21 +1,27 @@
 Package: quartools
 Title: Programmatic Element Creation For Quarto Documents
 Version: 0.0.0.9000
-Authors@R:
+Authors@R: c(
     person("Elian", "Thiele-Evans", , "elianhte@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-8008-3165"))
+           comment = c(ORCID = "0000-0001-8008-3165")),
+    person("Eli", "Pousson", , "eli.pousson@gmail.com", role = "aut",
+           comment = c(ORCID = "0000-0001-8280-1706"))
+  )
 Description: Programatically generate quarto-compliant markdown elements.
 License: GPL (>= 3)
+URL: https://github.com/ElianHugh/quartools
+BugReports: https://github.com/ElianHugh/quartools/issues
+Imports:
+    rlang (>= 1.1.0)
+Suggests:
+    htmltools,
+    knitr,
+    quarto,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3.9000
-Imports:
-    rlang
-Suggests:
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
-URL: https://github.com/ElianHugh/quartools
-BugReports: https://github.com/ElianHugh/quartools/issues
-VignetteBuilder: knitr

@@ -3,6 +3,6 @@
 
 
 ## usethis namespace: start
-#' @importFrom rlang %||%
+#' @import rlang
 ## usethis namespace: end
 NULL

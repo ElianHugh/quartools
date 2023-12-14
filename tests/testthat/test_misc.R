@@ -1,4 +1,3 @@
-
 test_that("mdapply works", {
     input <- list(
         list(type = "tip", msg = "a tip"),

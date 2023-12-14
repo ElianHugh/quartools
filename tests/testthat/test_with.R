@@ -21,8 +21,6 @@ test_that("with_*() output is as expected", {
     lapply(seq_along(extensions_input), function(i) {
         expect_snapshot(extensions_input[[i]])
     })
-
-
 })
 
 test_that("with_*() disallows invalid extensions", {
