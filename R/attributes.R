@@ -4,10 +4,10 @@
 #' [qto_span()], or [qto_fig_span()].
 #'
 #' @param ... Optional named attributes.
-#' @param id Div or span identifier. If `id` does not start with `"."`, the
-#'   period character is applied as a prefix.
-#' @param class Div or span class. If `class` does not start with `"#"`, the
+#' @param id Div or span identifier. If `id` does not start with `"#"`, the
 #'   hash character is applied as a prefix.
+#' @param class Div or span class. If `class` does not start with `"."`, the
+#'   period character is applied as a prefix.
 #' @param css If `{htmltools}` is installed, a list of css style attributes to
 #'   pass to [htmltools::css()].
 #' @param .attributes Optional list of attributes. If supplied, any attributes
