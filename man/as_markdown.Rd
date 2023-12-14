@@ -24,3 +24,4 @@ the character vector as markdown content, rather than as an R value.
 \examples{
 as_markdown(c("Hello world!"))
 }
+\keyword{internal}
