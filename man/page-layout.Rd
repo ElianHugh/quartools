@@ -19,10 +19,6 @@ with_screen_column(..., attr = NULL, extension = NULL)
 with_margin_column(..., attr = NULL)
 }
 \arguments{
-\item{...}{unnamed values that can be coerced to character vectors}
-
-\item{attr}{values that can be coerced to character vectors}
-
 \item{outset}{should the outset affix be applied to the column class?}
 
 \item{extension}{affix to apply to column class}
