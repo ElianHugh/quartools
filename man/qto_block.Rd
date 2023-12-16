@@ -38,7 +38,6 @@ qto_block("- ", LETTERS[1:4], collapse = "\n")
 }
 \seealso{
 \itemize{
-\item \code{\link[=as_markdown]{as_markdown()}}
 \item \code{\link[knitr:asis_output]{knitr::asis_output()}}
 }
 }

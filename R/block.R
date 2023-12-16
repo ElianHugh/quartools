@@ -15,7 +15,6 @@
 #'
 #' @return character vector of length 1
 #' @seealso
-#' - [as_markdown()]
 #' - [knitr::asis_output()]
 #'
 #' @export

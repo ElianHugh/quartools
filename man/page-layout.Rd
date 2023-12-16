@@ -8,20 +8,75 @@
 \alias{with_margin_column}
 \title{Temporarily modify page layout}
 \usage{
-with_body_column(..., attr = NULL, outset = FALSE, extension = NULL)
+with_body_column(
+  ...,
+  outset = FALSE,
+  id = NULL,
+  class = NULL,
+  extension = NULL,
+  .attributes = NULL,
+  call = caller_env()
+)
 
-with_page_column(..., attr = NULL, extension = NULL)
+with_page_column(
+  ...,
+  id = NULL,
+  class = NULL,
+  extension = NULL,
+  .attributes = NULL,
+  call = caller_env()
+)
 
-with_screen_inset_column(..., attr = NULL, extension = NULL)
+with_screen_inset_column(
+  ...,
+  id = NULL,
+  class = NULL,
+  extension = NULL,
+  .attributes = NULL,
+  call = caller_env()
+)
 
-with_screen_column(..., attr = NULL, extension = NULL)
+with_screen_column(
+  ...,
+  id = NULL,
+  class = NULL,
+  extension = NULL,
+  .attributes = NULL,
+  call = caller_env()
+)
 
-with_margin_column(..., attr = NULL)
+with_margin_column(..., id = NULL, .attributes = NULL, call = caller_env())
 }
 \arguments{
-\item{outset}{should the outset affix be applied to the column class?}
+\item{...}{
+  Arguments passed on to \code{\link[=qto_div]{qto_div}}
+  \describe{
+    \item{\code{.content}}{If \code{.content} is supplied, any values passed to \code{...} are
+ignored. If \code{.content} is \code{NULL}, it is set as all values passed to \code{...}.}
+    \item{\code{collapse}}{Passed to \code{\link[base:paste]{base::paste0()}} with \code{.content.}}
+    \item{\code{drop_empty}}{If \code{TRUE}, drop empty values from \code{.content} or \code{...}}
+    \item{\code{drop_na}}{If \code{TRUE}, drop \code{NA} values from \code{.content} or \code{...}}
+    \item{\code{css}}{If \code{{htmltools}} is installed, a list of css style attributes to
+pass to \code{\link[htmltools:css]{htmltools::css()}}.}
+  }}
+
+\item{outset}{If \code{TRUE}, the ouset affix is applied to the column class}
+
+\item{id}{Div or span identifier. If \code{id} does not start with \code{"#"}, the
+hash character is applied as a prefix.}
+
+\item{class}{Div or span class. If \code{class} does not start with \code{"."}, the
+period character is applied as a prefix.}
 
 \item{extension}{affix to apply to column class}
+
+\item{.attributes}{Optional list of attributes. If supplied, any attributes
+passed to \code{...} are ignored.}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 character vector of length 1
