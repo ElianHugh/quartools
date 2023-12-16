@@ -91,20 +91,7 @@ print(fig_example)
 
 We can leverage the `apply` family of functions ability to loop over list elements to simplify creating many divs at once.
 
-Normally this would require a workaround to allow for printing directly as markdown content, but `{quartools}` exports the `mdapply` function (read: "markdown apply") which allows for directly printing the result as valid markdown content:
-
-```{r}
-input <- list(
-  list(type = "tip", msg = "a tip"),
-  list(type = "warning", msg = "a warning"),
-  list(type = "message", msg = "a message")
-)
-
-mdapply(input, function(x) div(x$msg, attr = sprintf(".callout-%s", x$type))) |>
-  print()
-```
-
-`map_qto()` is a similar alternative and allows users to set the function using the `.type` parameter:
+`map_qto()` allows users to set the function using the `.type` parameter:
 
 ```{r}
 qto_list <- map_qto(list("This is a note.", "And this is a note.", "And this is a note"), .type = "callout")
