@@ -1,126 +1,99 @@
 # with_*() output is as expected
 
     Code
-      input[[i]]
+      with_body_column("foo", .attributes = ".bar")
     Output
       
-      
-      :::{.column-body .bar}
-      
+      ::: {.column-body .bar}
       foo
-      
-      :::
+      ::: 
       
 
 ---
 
     Code
-      input[[i]]
+      with_page_column("foo", .attributes = ".bar")
     Output
       
-      
-      :::{.column-page .bar}
-      
+      ::: {.column-page .bar}
       foo
-      
-      :::
+      ::: 
       
 
 ---
 
     Code
-      input[[i]]
+      with_screen_inset_column("foo", .attributes = ".bar")
     Output
       
-      
-      :::{.column-screen-inset .bar}
-      
+      ::: {.column-screen-inset .bar}
       foo
-      
-      :::
+      ::: 
       
 
 ---
 
     Code
-      input[[i]]
+      with_screen_column("foo", .attributes = ".bar")
     Output
       
-      
-      :::{.column-screen .bar}
-      
+      ::: {.column-screen .bar}
       foo
-      
-      :::
+      ::: 
       
 
 ---
 
     Code
-      input[[i]]
+      with_margin_column("foo", .attributes = ".bar")
     Output
       
-      
-      :::{.column-margin .bar}
-      
+      ::: {.column-margin .bar}
       foo
-      
-      :::
+      ::: 
       
 
 ---
 
     Code
-      extensions_input[[i]]
+      with_body_column("foo", .attributes = ".bar", extension = "left")
     Output
       
-      
-      :::{.column-body-left .bar}
-      
+      ::: {.column-body-left .bar}
       foo
-      
-      :::
+      ::: 
       
 
 ---
 
     Code
-      extensions_input[[i]]
+      with_page_column("foo", .attributes = ".bar", extension = "right")
     Output
       
-      
-      :::{.column-page-right .bar}
-      
+      ::: {.column-page-right .bar}
       foo
-      
-      :::
+      ::: 
       
 
 ---
 
     Code
-      extensions_input[[i]]
+      with_screen_inset_column("foo", .attributes = ".bar", extension = "shaded")
     Output
       
-      
-      :::{.column-screen-inset-shaded .bar}
-      
+      ::: {.column-screen-inset-shaded .bar}
       foo
-      
-      :::
+      ::: 
       
 
 ---
 
     Code
-      extensions_input[[i]]
+      with_screen_column("foo", .attributes = ".bar", extension = "left")
     Output
       
-      
-      :::{.column-screen-left .bar}
-      
+      ::: {.column-screen-left .bar}
       foo
-      
-      :::
+      ::: 
       
 
