@@ -14,7 +14,7 @@ qto_div(
   collapse = "",
   drop_empty = TRUE,
   drop_na = TRUE,
-  call = caller_env()
+  .call = caller_env()
 )
 }
 \arguments{
@@ -41,7 +41,7 @@ ignored. If \code{.content} is \code{NULL}, it is set as all values passed to \c
 
 \item{drop_na}{If \code{TRUE}, drop \code{NA} values from \code{.content} or \code{...}}
 
-\item{call}{The execution environment of a currently
+\item{.call}{The execution environment of a currently
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}

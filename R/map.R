@@ -12,7 +12,7 @@ map_chr <- function(.x, .f, ...) {
     .rlang_purrr_map_mold(.x, .f, character(1L), ...)
 }
 
-#' no@Rd
+#' @noRd
 map_int <- function(.x, .f, ...) {
     .rlang_purrr_map_mold(.x, .f, integer(1), ...)
 }
@@ -81,7 +81,6 @@ map_qto <- function(.x,
                     .collapse = "",
                     .call = caller_env()) {
     .type <- arg_match(.type, error_call = .call)
-
     map(
         .x,
         function(x) {
@@ -102,8 +101,41 @@ map_qto <- function(.x,
                 return(x)
             }
 
-            qto_block(x, sep = .sep, collapse = .collapse, call = .call)
+            qto_block(x, sep = .sep, collapse = .collapse, .call = .call)
         }
     )
 }
 
+#' @export
+pmap_qto <- function(.l,
+                     .f = NULL,
+                     ...,
+                     .type = c("block", "div", "callout", "heading"),
+                     .sep = "",
+                     .collapse = "",
+                     .call = caller_env()) {
+    .type <- arg_match(.type, error_call = .call)
+    pmap(
+        .l,
+        function(...) {
+            .f <- .f %||% switch(.type,
+                block = qto_block,
+                div = qto_div,
+                callout = qto_callout,
+                heading = qto_heading
+            )
+
+            if (!rlang::is_function(.f)) {
+                .f <- rlang::as_function(.f, call = .call)
+            }
+
+            x <- .f(...)
+
+            if (inherits(x, "quarto_block")) {
+                return(x)
+            }
+
+            qto_block(x, sep = .sep, collapse = .collapse, .call = .call)
+        }
+    )
+}
