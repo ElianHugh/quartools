@@ -18,8 +18,8 @@
 #' - [knitr::asis_output()]
 #'
 #' @export
-qto_block <- function(..., sep = "", collapse = "", call = caller_env()) {
-    check_dots_unnamed(call = call)
+qto_block <- function(..., sep = "", collapse = "", .call = caller_env()) {
+    check_dots_unnamed(call = .call)
     structure(
         paste(..., sep = sep, collapse = collapse),
         class = c("knit_asis", "quarto_block")
@@ -65,7 +65,7 @@ qto_div <- function(...,
                     collapse = "",
                     drop_empty = TRUE,
                     drop_na = TRUE,
-                    call = caller_env()) {
+                    .call = caller_env()) {
     check_dots_unnamed()
 
     .content <- .content %||% dots_list(...)
@@ -89,7 +89,7 @@ qto_div <- function(...,
         qto_fence(.attributes = .attributes),
         paste0(.content, collapse = collapse),
         qto_fence(),
-        call = call
+        .call = .call
     )
 }
 

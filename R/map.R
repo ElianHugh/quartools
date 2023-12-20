@@ -80,11 +80,11 @@ map_qto <- function(.x,
                     .sep = "",
                     .collapse = "",
                     .call = caller_env()) {
-    .type <- arg_match(.type, error_call = call)
+    .type <- arg_match(.type, error_call = .call)
 
     map(
         .x,
-        \(x) {
+        function(x) {
             .f <- .f %||% switch(.type,
                 block = qto_block,
                 div = qto_div,
@@ -93,7 +93,7 @@ map_qto <- function(.x,
             )
 
             if (!rlang::is_function(.f)) {
-                .f <- rlang::as_function(.f, call = call)
+                .f <- rlang::as_function(.f, call = .call)
             }
 
             x <- .f(x, ...)

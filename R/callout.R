@@ -37,7 +37,7 @@ qto_callout <- function(...,
                         id = NULL,
                         class = NULL,
                         .attributes = NULL,
-                        call = caller_env()) {
+                        .call = caller_env()) {
     type <- arg_match(type)
     class <- paste0("callout-", type)
 
@@ -67,6 +67,6 @@ qto_callout <- function(...,
         class = class,
         id = id,
         .attributes = .attributes,
-        call = call
+        .call = .call
     )
 }

@@ -28,7 +28,7 @@ with_body_column <- function(...,
                              class = NULL,
                              extension = NULL,
                              .attributes = NULL,
-                             call = caller_env()) {
+                             .call = caller_env()) {
     extension_string <- handle_extensions(extension, c("left", "right"))
     outset_string <- ifelse(isTRUE(outset), "-outset", "")
     cls <- sprintf(".column-body%s%s", outset_string, extension_string)
@@ -38,7 +38,7 @@ with_body_column <- function(...,
         ...,
         id = id,
         .attributes = .attributes,
-        call = call
+        .call = .call
     )
 }
 
@@ -49,7 +49,7 @@ with_page_column <- function(...,
                              class = NULL,
                              extension = NULL,
                              .attributes = NULL,
-                             call = caller_env()) {
+                             .call = caller_env()) {
     extension_string <- handle_extensions(extension, c("left", "right"))
     cls <- sprintf(".column-page%s", extension_string)
     .attributes <- c(cls, as.list(.attributes))
@@ -58,7 +58,7 @@ with_page_column <- function(...,
         ...,
         id = id,
         .attributes = .attributes,
-        call = call
+        .call = .call
     )
 }
 
@@ -69,7 +69,7 @@ with_screen_inset_column <- function(...,
                                      class = NULL,
                                      extension = NULL,
                                      .attributes = NULL,
-                                     call = caller_env()) {
+                                     .call = caller_env()) {
     extension_string <- handle_extensions(extension, c("left", "right", "shaded"))
     cls <- sprintf(".column-screen-inset%s", extension_string)
     .attributes <- c(cls, as.list(.attributes))
@@ -78,7 +78,7 @@ with_screen_inset_column <- function(...,
         ...,
         id = id,
         .attributes = .attributes,
-        call = call
+        .call = .call
     )
 }
 
@@ -89,7 +89,7 @@ with_screen_column <- function(...,
                                class = NULL,
                                extension = NULL,
                                .attributes = NULL,
-                               call = caller_env()) {
+                               .call = caller_env()) {
     extension_string <- handle_extensions(extension, c("left", "right"))
     cls <- sprintf(".column-screen%s", extension_string)
     .attributes <- c(cls, as.list(.attributes))
@@ -98,7 +98,7 @@ with_screen_column <- function(...,
         ...,
         id = id,
         .attributes = .attributes,
-        call = call
+        .call = .call
     )
 }
 
@@ -107,13 +107,13 @@ with_screen_column <- function(...,
 with_margin_column <- function(...,
                                id = NULL,
                                .attributes = NULL,
-                               call = caller_env()) {
+                               .call = caller_env()) {
     .attributes <- c(".column-margin", as.list(.attributes))
     .attributes <- list_drop_empty(.attributes)
     qto_div(
         ...,
         id = id,
         .attributes = .attributes,
-        call = call
+        .call = .call
     )
 }
