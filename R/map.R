@@ -23,6 +23,7 @@
 #'
 #' qto_block(qto_list)
 #'
+#' @seealso [quartools::pmap_qto], [purrr::map]
 #' @export
 map_qto <- function(.x,
                     .f = NULL,
@@ -57,6 +58,24 @@ map_qto <- function(.x,
     )
 }
 
+#' Map over multiple inputs simultaenously and return Quarto block vector
+#'
+#' [pmap_qto()] loops a list of vectors over a package function defined by .type or a custom
+#' function that returns a quarto block output. This function always returns a
+#' list of quarto block objects.
+#'
+#' @param .l An input vector.
+#' @param .f Optional function to apply to each element. If function does not
+#'   return a "quarto_block" class object, the output is passed to [qto_block()]
+#' @param ... Additional parameters passed to function defined by `.f`.
+#' @param .type If .f is `NULL`, type is used to define the function applied to
+#'   each element of the vector. Options include "block", "div", "callout", or
+#'   "heading".
+#' @param .sep,.collapse Additional parameters passed to [qto_block()] if .f
+#'   does not return a quarto block class object. Ignored if .f does return a
+#'   quarto block class object.
+#' @inheritParams rlang::args_error_context
+#' @seealso [quartools::map_qto], [purrr::pmap]
 #' @export
 pmap_qto <- function(.l,
                      .f = NULL,
