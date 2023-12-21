@@ -1,3 +1,5 @@
+# nocov start
+
 #' all functions here are copied from the
 #' `standalone-purrr.R` script in rlang:
 #' https://github.com/r-lib/rlang/blob/main/R/standalone-purrr.R
@@ -47,3 +49,5 @@ pmap <- function(.l, .f, ...) {
 
     args
 }
+
+# nocov end
