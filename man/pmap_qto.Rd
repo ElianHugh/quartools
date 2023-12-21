@@ -40,6 +40,16 @@ mentioned in error messages as the source of the error. See the
 function that returns a quarto block output. This function always returns a
 list of quarto block objects.
 }
+\examples{
+qto_list <- pmap_qto(
+    list(
+        list("Answer:", "Answer:", "Answer:"),
+        list("Yes", "No", "Yes")
+    )
+)
+qto_block(qto_list)
+
+}
 \seealso{
-\link{map_qto}, \link[purrr:pmap]{purrr::pmap}
+\code{\link[=map_qto]{map_qto()}}, \code{\link[purrr:pmap]{purrr::pmap()}}
 }

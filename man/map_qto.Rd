@@ -50,5 +50,5 @@ qto_block(qto_list)
 
 }
 \seealso{
-\link{pmap_qto}, \link[purrr:map]{purrr::map}
+\code{\link[=pmap_qto]{pmap_qto()}}, \code{\link[purrr:map]{purrr::map()}}
 }
