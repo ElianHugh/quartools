@@ -76,6 +76,18 @@ map_qto <- function(.x,
 #' )
 #' qto_block(qto_list)
 #'
+#' qto_list <- pmap_qto(
+#'     list(
+#'         "Hello",
+#'         "World",
+#'         "!"
+#'     ),
+#'     .f = function(x, y, z) {
+#'         sprintf("%s %s%s", x, y, z)
+#'     }
+#' )
+#' qto_block(qto_list)
+#'
 #' @seealso [quartools::map_qto()], [purrr::pmap()]
 #' @export
 pmap_qto <- function(.l,
