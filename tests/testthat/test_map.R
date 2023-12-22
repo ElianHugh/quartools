@@ -5,9 +5,16 @@ check_types <- function(lst) {
     all(res)
 }
 
-test_that("mapping function is resolved correctly", {
-    expect_type(resolve_mapping_function(f = ~.x + 1L), "closure")
+test_that("mapping function works", {
+    expect_type(resolve_mapping_function(f = ~ .x + 1L), "closure")
+
+    fn <- resolve_mapping_function(type = "block", sep = " ", collapse = " ")
+    expect_identical(
+        fn("Hello", c("world", "!")),
+        qto_block("Hello", c("world", "!"), sep = " ", collapse = " ")
+    )
 })
+
 
 test_that("map_qto works", {
     qto_list <- map_qto(
@@ -39,3 +46,4 @@ test_that("pmap_qto works", {
     expect_true(check_types(qto_list))
     expect_snapshot(qto_list)
 })
+
