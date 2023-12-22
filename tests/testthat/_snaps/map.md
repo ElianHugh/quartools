@@ -55,3 +55,27 @@
       Answer: Yes
       
 
+---
+
+    Code
+      qto_list
+    Output
+      [[1]]
+      
+      * mpg is: 21
+      * cyl is: 6
+      * disp is: 160
+      
+      [[2]]
+      
+      * mpg is: 21
+      * cyl is: 6
+      * disp is: 160
+      
+      [[3]]
+      
+      * mpg is: 22.8
+      * cyl is: 4
+      * disp is: 108
+      
+

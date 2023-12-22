@@ -5,7 +5,7 @@ check_types <- function(lst) {
     all(res)
 }
 
-test_that("mapping function works", {
+test_that("resolve_mapping_function works", {
     expect_type(resolve_mapping_function(f = ~ .x + 1L), "closure")
 
     fn <- resolve_mapping_function(type = "block", sep = " ", collapse = " ")
@@ -45,5 +45,22 @@ test_that("pmap_qto works", {
     expect_length(qto_list, 3L)
     expect_true(check_types(qto_list))
     expect_snapshot(qto_list)
-})
 
+
+    qto_list <- pmap_qto(
+        mtcars[seq(3L), seq(3L)],
+        function(mpg, cyl, disp) {
+            qto_li(
+                .list = list(
+                    sprintf("mpg is: %s", mpg),
+                    sprintf("cyl is: %s", cyl),
+                    sprintf("disp is: %s", disp)
+                )
+            )
+        }
+    )
+    expect_length(qto_list, 3L)
+    expect_true(check_types(qto_list))
+    expect_snapshot(qto_list)
+
+})
