@@ -1,14 +1,24 @@
-resolve_mapping_function <- function(.f = NULL, .type = NULL, .call = NULL) {
-    .f <- .f %||% switch(.type,
-        block = qto_block,
-        div = qto_div,
-        callout = qto_callout,
-        heading = qto_heading
-    )
-    if (!is_function(.f)) {
-        .f <- as_function(.f, call = .call)
+partial_qto_func <- function(f, collapse, sep) {
+    function(...) {
+        f(..., collapse = collapse, sep = sep)
     }
-    .f
+}
+
+resolve_mapping_function <- function(f = NULL,
+                                     type = NULL,
+                                     collapse = NULL,
+                                     sep = NULL,
+                                     call = NULL) {
+    f <- f %||% switch(type,
+        block   = partial_qto_func(qto_block, collapse, sep),
+        div     = partial_qto_func(qto_div, collapse, sep),
+        callout = partial_qto_func(qto_callout, collapse, sep),
+        heading = partial_qto_func(qto_heading, collapse, sep),
+    )
+    if (!is_function(f)) {
+        f <- as_function(f, call = call)
+    }
+    f
 }
 
 #' Apply a function to each element of a vector and return Quarto block vector
@@ -46,7 +56,13 @@ map_qto <- function(.x,
                     .collapse = "",
                     .call = caller_env()) {
     .type <- arg_match(.type, error_call = .call)
-    .f <- resolve_mapping_function(.f, .type, .call)
+    .f <- resolve_mapping_function(
+        f = .f,
+        type = .type,
+        collapse = .collapse,
+        sep = .sep,
+        call = .call
+    )
     map(
         .x,
         function(x) {
@@ -56,9 +72,6 @@ map_qto <- function(.x,
         }
     )
 }
-
-
-
 
 #' Map over multiple inputs simultaenously and return Quarto block vector
 #'
@@ -100,7 +113,13 @@ pmap_qto <- function(.l,
                      .collapse = "",
                      .call = caller_env()) {
     .type <- arg_match(.type, error_call = .call)
-    .f <- resolve_mapping_function(.f, .type, .call)
+    .f <- resolve_mapping_function(
+        f = .f,
+        type = .type,
+        collapse = .collapse,
+        sep = .sep,
+        call = .call
+    )
     pmap(
         .l,
         function(...) {
