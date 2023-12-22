@@ -39,4 +39,3 @@ test_that("pmap_qto works", {
     expect_true(check_types(qto_list))
     expect_snapshot(qto_list)
 })
-

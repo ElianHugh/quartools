@@ -1,6 +1,8 @@
 partial_qto_func <- function(f, collapse, sep) {
-    function(...) {
-        f(..., collapse = collapse, sep = sep)
+    if (identical(f, qto_callout) || identical(f, qto_div)) {
+        function(...) f(...)
+    } else {
+        function(...) f(..., collapse = collapse, sep = sep)
     }
 }
 
