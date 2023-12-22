@@ -1,3 +1,16 @@
+resolve_mapping_function <- function(.f, .type, .call) {
+    .f <- .f %||% switch(.type,
+        block = qto_block,
+        div = qto_div,
+        callout = qto_callout,
+        heading = qto_heading
+    )
+    if (!is_function(.f)) {
+        .f <- as_function(.f, call = .call)
+    }
+    .f
+}
+
 #' Apply a function to each element of a vector and return Quarto block vector
 #'
 #' [map_qto()] loops a list over a package function defined by .type or a custom
@@ -33,20 +46,10 @@ map_qto <- function(.x,
                     .collapse = "",
                     .call = caller_env()) {
     .type <- arg_match(.type, error_call = .call)
+    .f <- resolve_mapping_function(.f, .type, .call)
     map(
         .x,
         function(x) {
-            .f <- .f %||% switch(.type,
-                block = qto_block,
-                div = qto_div,
-                callout = qto_callout,
-                heading = qto_heading
-            )
-
-            if (!rlang::is_function(.f)) {
-                .f <- rlang::as_function(.f, call = .call)
-            }
-
             x <- .f(x, ...)
 
             if (inherits(x, "quarto_block")) {
@@ -57,6 +60,9 @@ map_qto <- function(.x,
         }
     )
 }
+
+
+
 
 #' Map over multiple inputs simultaenously and return Quarto block vector
 #'
@@ -98,27 +104,14 @@ pmap_qto <- function(.l,
                      .collapse = "",
                      .call = caller_env()) {
     .type <- arg_match(.type, error_call = .call)
+    .f <- resolve_mapping_function(.f, .type, .call)
     pmap(
         .l,
         function(...) {
-            .f <- .f %||% switch(.type,
-                block = qto_block,
-                div = qto_div,
-                callout = qto_callout,
-                heading = qto_heading
-            )
-
-            if (!rlang::is_function(.f)) {
-                .f <- rlang::as_function(.f, call = .call)
-            }
-
             x <- .f(...)
-
-            if (inherits(x, "quarto_block")) {
-                return(x)
-            }
-
+            if (inherits(x, "quarto_block")) return(x)
             qto_block(x, sep = .sep, collapse = .collapse, .call = .call)
-        }
+        },
+        ...
     )
 }
