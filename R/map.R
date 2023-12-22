@@ -1,4 +1,4 @@
-resolve_mapping_function <- function(.f, .type, .call) {
+resolve_mapping_function <- function(.f = NULL, .type = NULL, .call = NULL) {
     .f <- .f %||% switch(.type,
         block = qto_block,
         div = qto_div,
@@ -51,11 +51,7 @@ map_qto <- function(.x,
         .x,
         function(x) {
             x <- .f(x, ...)
-
-            if (inherits(x, "quarto_block")) {
-                return(x)
-            }
-
+            if (inherits(x, "quarto_block")) return(x)
             qto_block(x, sep = .sep, collapse = .collapse, .call = .call)
         }
     )
