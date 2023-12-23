@@ -56,21 +56,21 @@ map_qto <- function(.x,
                     .type = c("block", "div", "callout", "heading"),
                     .sep = "",
                     .collapse = "",
-                    .call = caller_env()) {
-    .type <- arg_match(.type, error_call = .call)
+                    call = caller_env()) {
+    .type <- arg_match(.type, error_call = call)
     .f <- resolve_mapping_function(
         f = .f,
         type = .type,
         collapse = .collapse,
         sep = .sep,
-        call = .call
+        call = call
     )
     map(
         .x,
         function(x) {
             x <- .f(x, ...)
             if (inherits(x, "quarto_block")) return(x)
-            qto_block(x, sep = .sep, collapse = .collapse, .call = .call)
+            qto_block(x, sep = .sep, collapse = .collapse, call = call)
         }
     )
 }
@@ -94,13 +94,15 @@ map_qto <- function(.x,
 #' qto_block(qto_list)
 #'
 #' qto_list <- pmap_qto(
-#'     list(
-#'         "Hello",
-#'         "World",
-#'         "!"
-#'     ),
-#'     .f = function(x, y, z) {
-#'         sprintf("%s %s%s", x, y, z)
+#'     mtcars[seq(3L), seq(3L)],
+#'     function(mpg, cyl, disp) {
+#'         qto_li(
+#'             .list = list(
+#'                 sprintf("mpg is: %s", mpg),
+#'                 sprintf("cyl is: %s", cyl),
+#'                 sprintf("disp is: %s", disp)
+#'             )
+#'         )
 #'     }
 #' )
 #' qto_block(qto_list)
@@ -113,21 +115,21 @@ pmap_qto <- function(.l,
                      .type = c("block", "div", "callout", "heading"),
                      .sep = "",
                      .collapse = "",
-                     .call = caller_env()) {
-    .type <- arg_match(.type, error_call = .call)
+                     call = caller_env()) {
+    .type <- arg_match(.type, error_call = call)
     .f <- resolve_mapping_function(
         f = .f,
         type = .type,
         collapse = .collapse,
         sep = .sep,
-        call = .call
+        call = call
     )
     pmap(
         .l,
         function(...) {
             x <- .f(...)
             if (inherits(x, "quarto_block")) return(x)
-            qto_block(x, sep = .sep, collapse = .collapse, .call = .call)
+            qto_block(x, sep = .sep, collapse = .collapse, call = call)
         },
         ...
     )

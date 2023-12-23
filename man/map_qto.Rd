@@ -11,7 +11,7 @@ map_qto(
   .type = c("block", "div", "callout", "heading"),
   .sep = "",
   .collapse = "",
-  .call = caller_env()
+  call = caller_env()
 )
 }
 \arguments{
@@ -30,7 +30,7 @@ each element of the vector. Options include "block", "div", "callout", or
 does not return a quarto block class object. Ignored if .f does return a
 quarto block class object.}
 
-\item{.call}{The execution environment of a currently
+\item{call}{The execution environment of a currently
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}

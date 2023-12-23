@@ -11,7 +11,7 @@ pmap_qto(
   .type = c("block", "div", "callout", "heading"),
   .sep = "",
   .collapse = "",
-  .call = caller_env()
+  call = caller_env()
 )
 }
 \arguments{
@@ -30,7 +30,7 @@ each element of the vector. Options include "block", "div", "callout", or
 does not return a quarto block class object. Ignored if .f does return a
 quarto block class object.}
 
-\item{.call}{The execution environment of a currently
+\item{call}{The execution environment of a currently
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
@@ -50,13 +50,15 @@ qto_list <- pmap_qto(
 qto_block(qto_list)
 
 qto_list <- pmap_qto(
-    list(
-        "Hello",
-        "World",
-        "!"
-    ),
-    .f = function(x, y, z) {
-        sprintf("\%s \%s\%s", x, y, z)
+    mtcars[seq(3L), seq(3L)],
+    function(mpg, cyl, disp) {
+        qto_li(
+            .list = list(
+                sprintf("mpg is: \%s", mpg),
+                sprintf("cyl is: \%s", cyl),
+                sprintf("disp is: \%s", disp)
+            )
+        )
     }
 )
 qto_block(qto_list)

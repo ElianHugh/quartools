@@ -15,7 +15,7 @@ with_body_column(
   class = NULL,
   extension = NULL,
   .attributes = NULL,
-  .call = caller_env()
+  call = caller_env()
 )
 
 with_page_column(
@@ -24,7 +24,7 @@ with_page_column(
   class = NULL,
   extension = NULL,
   .attributes = NULL,
-  .call = caller_env()
+  call = caller_env()
 )
 
 with_screen_inset_column(
@@ -33,7 +33,7 @@ with_screen_inset_column(
   class = NULL,
   extension = NULL,
   .attributes = NULL,
-  .call = caller_env()
+  call = caller_env()
 )
 
 with_screen_column(
@@ -42,10 +42,10 @@ with_screen_column(
   class = NULL,
   extension = NULL,
   .attributes = NULL,
-  .call = caller_env()
+  call = caller_env()
 )
 
-with_margin_column(..., id = NULL, .attributes = NULL, .call = caller_env())
+with_margin_column(..., id = NULL, .attributes = NULL, call = caller_env())
 }
 \arguments{
 \item{...}{
@@ -73,7 +73,7 @@ period character is applied as a prefix.}
 \item{.attributes}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
 
-\item{.call}{The execution environment of a currently
+\item{call}{The execution environment of a currently
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
