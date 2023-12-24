@@ -2,6 +2,7 @@
 
 S3method(print,quarto_block)
 export(map_qto)
+export(pmap_qto)
 export(qto_attributes)
 export(qto_block)
 export(qto_callout)
