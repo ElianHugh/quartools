@@ -38,7 +38,8 @@ resolve_mapping_function <- function(f = NULL,
 #'   "heading".
 #' @param .sep,.collapse Additional parameters passed to [qto_block()] if .f
 #'   does not return a quarto block class object. Ignored if .f does return a
-#'   quarto block class object.
+#'   quarto block class object. Also passed to the .type function if it is
+#'   a "heading" or "block".
 #' @inheritParams rlang::args_error_context
 #' @examples
 #' qto_list <- map_qto(
