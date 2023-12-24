@@ -1,6 +1,8 @@
 partial_qto_func <- function(f, collapse, sep) {
-    if (identical(f, qto_callout) || identical(f, qto_div)) {
+    if (identical(f, qto_callout)) {
         function(...) f(...)
+    } else if ((identical(f, qto_div))) {
+        function(...) f(..., collapse = collapse)
     } else {
         function(...) f(..., collapse = collapse, sep = sep)
     }
@@ -38,8 +40,8 @@ resolve_mapping_function <- function(f = NULL,
 #'   "heading".
 #' @param .sep,.collapse Additional parameters passed to [qto_block()] if .f
 #'   does not return a quarto block class object. Ignored if .f does return a
-#'   quarto block class object. Also passed to the .type function if it is
-#'   a "heading" or "block".
+#'   quarto block class object. Also passed to the relevant .type function if it supports
+#'   the collapse and/or sep parameters.
 #' @inheritParams rlang::args_error_context
 #' @examples
 #' qto_list <- map_qto(
