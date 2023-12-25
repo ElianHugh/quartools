@@ -52,4 +52,9 @@ qto_fig("graphic.pdf", title = "Title of the graphic")
 }
 \seealso{
 \code{\link[knitr:include_graphics]{knitr::include_graphics()}}
+
+Other span: 
+\code{\link{qto_link}()},
+\code{\link{qto_span}()}
 }
+\concept{span}

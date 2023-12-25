@@ -37,3 +37,9 @@ qto_span("This is *some text*", class = "class", key = "value")
 qto_span("This is good", id = "id", class = "class", key1 = "val1", key2 = "val2")
 
 }
+\seealso{
+Other span: 
+\code{\link{qto_fig}()},
+\code{\link{qto_link}()}
+}
+\concept{span}
