@@ -22,6 +22,7 @@
 #' qto_fig("graphic.pdf", title = "Title of the graphic")
 #'
 #' @seealso [knitr::include_graphics()]
+#' @family span
 #' @export
 qto_fig <- function(src,
                     caption = NULL,
@@ -72,21 +73,22 @@ qto_fig <- function(src,
 #'
 #' @param src Image source. Either a file path or URL.
 #' @param caption Caption text
-#' @inheritDotParams qto_attributes
+#' @inheritParams qto_src_span
+#' @inheritDotParams qto_src_span
 #' @keywords internal
-qto_fig_span <- function(src, caption = NULL, ...) {
-    fig_attributes <- qto_attributes(
-        ...
-    )
-
-    if (fig_attributes == "{}") {
-        fig_attributes <- ""
-    }
-
-    qto_block(
-        "!",
-        bracket(caption),
-        parentheses(src),
-        fig_attributes
+qto_fig_span <- function(src,
+                         caption = NULL,
+                         ...,
+                         allow_missing = TRUE,
+                         allow_empty = FALSE,
+                         call = caller_env()) {
+    qto_src_span(
+        .before = "!",
+        text = caption,
+        src = src,
+        ...,
+        allow_missing = allow_missing,
+        allow_empty = allow_empty,
+        call = call
     )
 }
