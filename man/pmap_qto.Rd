@@ -28,8 +28,7 @@ each element of the vector. Options include "block", "div", "callout", or
 
 \item{.sep, .collapse}{Additional parameters passed to \code{\link[=qto_block]{qto_block()}} if .f
 does not return a quarto block class object. Ignored if .f does return a
-quarto block class object. Also passed to the relevant .type function if it supports
-the collapse and/or sep parameters.}
+quarto block class object.}
 
 \item{call}{The execution environment of a currently
 running function, e.g. \code{caller_env()}. The function will be
