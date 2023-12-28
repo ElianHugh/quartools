@@ -34,8 +34,9 @@ qto_attributes <- function(id = NULL,
         id <- paste0("#", id)
     }
 
-    if (is_string(class) && !grepl("^\\.", class)) {
-        class <- paste0(".", class)
+    if (all(is.character(class))) {
+        has_class_prefix <- grepl("^\\.", class)
+        class[!has_class_prefix] <- paste0(".", class[!has_class_prefix])
     }
 
     if (!is.null(css) && is_installed("htmltools")) {
