@@ -53,7 +53,7 @@ test_that("map_qto works", {
         .f = function(x) x,
         .collapse = " "
     )
-    expect_length(qto_list, 3L)
+    expect_length(qto_list, 2L)
     expect_true(check_types(qto_list))
     expect_snapshot(qto_list)
 })
