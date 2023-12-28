@@ -21,7 +21,7 @@ qto_fig_span(
 \item{...}{
   Arguments passed on to \code{\link[=qto_src_span]{qto_src_span}}
   \describe{
-    \item{\code{}}{}
+    \item{\code{text}}{Caption or link text.}
   }}
 
 \item{allow_missing}{If \code{FALSE} (default), error if string is not a URL and

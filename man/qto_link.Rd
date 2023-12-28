@@ -2,23 +2,39 @@
 % Please edit documentation in R/link.R
 \name{qto_link}
 \alias{qto_link}
-\title{Create a link}
+\title{Create a Markdown link}
 \usage{
-qto_link(src, text, ..., allow_empty = FALSE, call = caller_env())
+qto_link(src, text = NULL, ..., allow_empty = FALSE, call = caller_env())
 }
 \arguments{
-\item{src}{Image source or URL.}
+\item{src}{Path or URL for link. Required.}
 
-\item{allow_empty}{If \code{FALSE} (default), error if string is empty. If \code{TRUE},
-allow input to be an empty string.}
+\item{text}{Optional link text. If link text is not provided, a bare link,
+e.g. \verb{<https://quarto.org>} is returned.}
 
-\item{call}{The execution environment of a currently
-running function, e.g. \code{caller_env()}. The function will be
-mentioned in error messages as the source of the error. See the
-\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
+\item{...}{
+  Arguments passed on to \code{\link[=qto_attributes]{qto_attributes}}
+  \describe{
+    \item{\code{id}}{Div or span identifier. If \code{id} does not start with \code{"#"}, the
+hash character is applied as a prefix.}
+    \item{\code{class}}{Div or span class. If \code{class} does not start with \code{"."}, the
+period character is applied as a prefix.}
+    \item{\code{css}}{If \code{{htmltools}} is installed, a list of css style attributes to
+pass to \code{\link[htmltools:css]{htmltools::css()}}.}
+    \item{\code{.attributes}}{Optional list of attributes. If supplied, any attributes
+passed to \code{...} are ignored.}
+  }}
 }
 \description{
-Create a link
+Create a Markdown link
+}
+\examples{
+qto_link("https://quarto.org")
+
+qto_link("https://quarto.org", "Quarto")
+
+qto_link("https://quarto.org", "Quarto", class = "smaller")
+
 }
 \seealso{
 Other span: 

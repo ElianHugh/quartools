@@ -17,6 +17,8 @@ qto_src_span(
 \arguments{
 \item{src}{Image source or URL.}
 
+\item{text}{Caption or link text.}
+
 \item{...}{
   Arguments passed on to \code{\link[=qto_attributes]{qto_attributes}}
   \describe{
@@ -28,8 +30,9 @@ period character is applied as a prefix.}
 pass to \code{\link[htmltools:css]{htmltools::css()}}.}
     \item{\code{.attributes}}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
-    \item{\code{.output}}{Output type. If "embrace", the returned attributes are
-enclosed in curly brackets.}
+    \item{\code{.output}}{Output type. If "embrace", the returned attributes are always
+enclosed in curly brackets, e.g. "{}" if no attributes are supplied. If
+"span", an empty string is returned if no attributes are provided.}
     \item{\code{.drop_empty}}{If \code{TRUE}, empty attributes are dropped.}
   }}
 
@@ -44,8 +47,6 @@ allow input to be an empty string.}
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
-
-\item{caption}{Caption text}
 }
 \description{
 Also used by \code{\link[=qto_fig_span]{qto_fig_span()}}

@@ -18,8 +18,9 @@ hash character is applied as a prefix.}
 period character is applied as a prefix.}
     \item{\code{css}}{If \code{{htmltools}} is installed, a list of css style attributes to
 pass to \code{\link[htmltools:css]{htmltools::css()}}.}
-    \item{\code{.output}}{Output type. If "embrace", the returned attributes are
-enclosed in curly brackets.}
+    \item{\code{.output}}{Output type. If "embrace", the returned attributes are always
+enclosed in curly brackets, e.g. "{}" if no attributes are supplied. If
+"span", an empty string is returned if no attributes are provided.}
     \item{\code{.drop_empty}}{If \code{TRUE}, empty attributes are dropped.}
   }}
 
