@@ -1,20 +1,48 @@
-#' Create a link
+#' Create a Markdown link
 #'
-#' @inheritParams qto_src_span
+#' @param src Path or URL for link. Required.
+#' @param text Optional link text. If link text is not provided, a bare link,
+#'   e.g. `<https://quarto.org>` is returned.
+#' @inheritDotParams qto_attributes -.output -.drop_empty
+#' @examples
+#' qto_link("https://quarto.org")
+#'
+#' qto_link("https://quarto.org", "Quarto")
+#'
+#' qto_link("https://quarto.org", "Quarto", class = "smaller")
+#'
 #' @family span
 #' @export
 qto_link <- function(src,
-                     text,
+                     text = NULL,
                      ...,
                      allow_empty = FALSE,
                      call = caller_env()) {
-  qto_src_span(
-    text = text,
-    src = src,
-    ...,
+  check_src(
+    src,
     allow_empty = allow_empty,
     call = call
   )
+
+  if (is_string(src) && is.null(text)) {
+    qto_block(
+      combine(src, before = "<", after = ">"),
+      qto_attributes(
+        ...,
+        .output = "span",
+        call = call
+      ),
+      call = call
+    )
+  } else {
+    qto_src_span(
+      src = src,
+      text = text,
+      ...,
+      allow_empty = allow_empty,
+      call = call
+    )
+  }
 }
 
 
@@ -23,7 +51,7 @@ qto_link <- function(src,
 #' Also used by [qto_fig_span()]
 #'
 #' @param src Image source or URL.
-#' @param caption Caption text
+#' @param text Caption or link text.
 #' @inheritParams check_src
 #' @inheritDotParams qto_attributes
 #' @keywords internal
@@ -34,26 +62,15 @@ qto_src_span <- function(src,
                          allow_missing = FALSE,
                          allow_empty = FALSE,
                          call = caller_env()) {
-  check_src(
-    src,
-    allow_missing = allow_missing,
-    allow_empty = allow_empty,
-    call = call
-  )
-
-  .attributes <- qto_attributes(
-    ...
-  )
-
-  if (.attributes == "{}") {
-    .attributes <- ""
-  }
-
   qto_block(
     .before,
     bracket(text),
     parentheses(src),
-    .attributes,
+    qto_attributes(
+      ...,
+      .output = "span",
+      call = call
+    ),
     call = call
   )
 }

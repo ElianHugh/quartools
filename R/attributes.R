@@ -12,8 +12,9 @@
 #'   pass to [htmltools::css()].
 #' @param .attributes Optional list of attributes. If supplied, any attributes
 #'   passed to `...` are ignored.
-#' @param .output Output type. If "embrace", the returned attributes are
-#'   enclosed in curly brackets.
+#' @param .output Output type. If "embrace", the returned attributes are always
+#'   enclosed in curly brackets, e.g. "{}" if no attributes are supplied. If
+#'   "span", an empty string is returned if no attributes are provided.
 #' @param .drop_empty If `TRUE`, empty attributes are dropped.
 #' @examples
 #' qto_attributes(id = "id", class = "class")
@@ -29,7 +30,8 @@ qto_attributes <- function(id = NULL,
                            ...,
                            .attributes = NULL,
                            .output = "embrace",
-                           .drop_empty = TRUE) {
+                           .drop_empty = TRUE,
+                           call = caller_env()) {
     if (is_string(id) && !grepl("^#", id)) {
         id <- paste0("#", id)
     }
@@ -54,9 +56,15 @@ qto_attributes <- function(id = NULL,
         .attributes <- paste0(c(id, class, css, .attributes), collapse = " ")
     }
 
+    .output <- arg_match0(.output, c("embrace", "span"), error_call = call)
+
+    if ((.output == "span") && !is.null(.attributes)) {
+        .output <- "embrace"
+    }
+
     switch(.output,
         embrace = embrace(.attributes),
-        .attributes
+        span = ""
     )
 }
 

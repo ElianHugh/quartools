@@ -82,6 +82,13 @@ qto_fig_span <- function(src,
                          allow_missing = TRUE,
                          allow_empty = FALSE,
                          call = caller_env()) {
+    check_src(
+        src,
+        allow_missing = allow_missing,
+        allow_empty = allow_empty,
+        call = call
+    )
+
     qto_src_span(
         .before = "!",
         text = caption,
