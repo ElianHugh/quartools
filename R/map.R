@@ -1,23 +1,11 @@
-partial_qto_func <- function(f, collapse, sep) {
-    if (identical(f, qto_callout)) {
-        function(...) f(...)
-    } else if ((identical(f, qto_div))) {
-        function(...) f(..., collapse = collapse)
-    } else {
-        function(...) f(..., collapse = collapse, sep = sep)
-    }
-}
-
 resolve_mapping_function <- function(f = NULL,
                                      type = NULL,
-                                     collapse = NULL,
-                                     sep = NULL,
                                      call = NULL) {
     f <- f %||% switch(type,
-        block   = partial_qto_func(qto_block, collapse, sep),
-        div     = partial_qto_func(qto_div, collapse, sep),
-        callout = partial_qto_func(qto_callout, collapse, sep),
-        heading = partial_qto_func(qto_heading, collapse, sep),
+        block   = qto_block,
+        div     = qto_div,
+        callout = qto_callout,
+        heading = qto_heading,
     )
     if (!is_function(f)) {
         f <- as_function(f, call = call)
@@ -64,8 +52,6 @@ map_qto <- function(.x,
     .f <- resolve_mapping_function(
         f = .f,
         type = .type,
-        collapse = .collapse,
-        sep = .sep,
         call = call
     )
     map(
@@ -123,8 +109,6 @@ pmap_qto <- function(.l,
     .f <- resolve_mapping_function(
         f = .f,
         type = .type,
-        collapse = .collapse,
-        sep = .sep,
         call = call
     )
     pmap(

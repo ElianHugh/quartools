@@ -8,44 +8,28 @@ check_types <- function(lst) {
 test_that("resolve_mapping_function works", {
     expect_type(resolve_mapping_function(f = ~ .x + 1L), "closure")
 
-    block_fn <- resolve_mapping_function(
-        type = "block",
-        sep = " ",
-        collapse = " "
-    )
+    block_fn <- resolve_mapping_function(type = "block")
     expect_identical(
-        block_fn("Hello", c("world", "!")),
+        block_fn("Hello", c("world", "!"), sep = " ", collapse = " "),
         qto_block("Hello", c("world", "!"), sep = " ", collapse = " ")
     )
 
-    div_fn <- resolve_mapping_function(
-        type = "div",
-        sep = " ",
-        collapse = "bar"
-    )
+    div_fn <- resolve_mapping_function(type = "div")
     expect_identical(
-        div_fn("foo", "baz"),
-        qto_div("foo", "bar", "baz")
+        div_fn("foo", "bar", "baz", collapse = " "),
+        qto_div("foo", "bar", "baz", collapse = " ")
     )
 
-    callout_fn <- resolve_mapping_function(
-        type = "callout",
-        sep = " ",
-        collapse = "bar"
-    )
+    callout_fn <- resolve_mapping_function(type = "callout")
     expect_identical(
-        callout_fn("foo", "baz"),
-        qto_callout("foo", "baz")
+        callout_fn("foo", "baz", collapse = TRUE),
+        qto_callout("foo", "baz", collapse = TRUE)
     )
 
-    heading_fn <- resolve_mapping_function(
-        type = "heading",
-        sep = " ",
-        collapse = " "
-    )
+    heading_fn <- resolve_mapping_function(type = "heading")
     expect_identical(
-        heading_fn("foo", "baz"),
-        qto_heading("foo", "baz", collapse = " ", sep = " ")
+        heading_fn("foo", "baz", sep = " ", collapse = " "),
+        qto_heading("foo", "baz", sep = " ", collapse = " ")
     )
 
 })
@@ -62,8 +46,12 @@ test_that("map_qto works", {
 
 
     qto_list <- map_qto(
-        list("foo", "bar", "baz"),
-        .f = function(x) x
+        list(
+            c("foo", "bar", "baz"),
+            c("a", "b", "c")
+        ),
+        .f = function(x) x,
+        .collapse = " "
     )
     expect_length(qto_list, 3L)
     expect_true(check_types(qto_list))
