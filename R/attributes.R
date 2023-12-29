@@ -30,13 +30,8 @@ qto_attributes <- function(id = NULL,
                            .attributes = NULL,
                            .output = "embrace",
                            .drop_empty = TRUE) {
-    if (is_string(id) && !grepl("^#", id)) {
-        id <- paste0("#", id)
-    }
-
-    if (is_string(class) && !grepl("^\\.", class)) {
-        class <- paste0(".", class)
-    }
+    id <- prefix_ids(id)
+    class <- prefix_classes(class)
 
     if (!is.null(css) && is_installed("htmltools")) {
         css <- htmltools::css(!!!css)
@@ -123,4 +118,42 @@ qto_attr_values <- function(values, mark = "'") {
         },
         NA_character_
     )
+}
+
+prefix_ids <- function(x) {
+    if (is.null(x)) {
+        return(x)
+    }
+
+    vec <- vapply(
+        x, function(y) {
+            if (is_string(y) && !grepl("^#", y)) {
+                paste0("#", y)
+            } else {
+                y
+            }
+        },
+        USE.NAMES = FALSE,
+        FUN.VALUE = NA_character_
+    )
+    paste(vec, collapse = " ", sep = " ")
+}
+
+prefix_classes <- function(x) {
+    if (is.null(x)) {
+        return(x)
+    }
+
+    vec <- vapply(
+        x, function(y) {
+            if (is_string(y) && !grepl("^\\.", y)) {
+                paste0(".", y)
+            } else {
+                y
+            }
+        },
+        USE.NAMES = FALSE,
+        FUN.VALUE = NA_character_
+    )
+    paste(vec, collapse = " ", sep = " ")
 }
