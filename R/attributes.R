@@ -16,6 +16,7 @@
 #'   enclosed in curly brackets, e.g. "{}" if no attributes are supplied. If
 #'   "span", an empty string is returned if no attributes are provided.
 #' @param .drop_empty If `TRUE`, empty attributes are dropped.
+#' @inheritParams rlang::args_error_context
 #' @examples
 #' qto_attributes(id = "id", class = "class")
 #'

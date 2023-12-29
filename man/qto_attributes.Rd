@@ -35,6 +35,11 @@ enclosed in curly brackets, e.g. "{}" if no attributes are supplied. If
 "span", an empty string is returned if no attributes are provided.}
 
 \item{.drop_empty}{If \code{TRUE}, empty attributes are dropped.}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \description{
 \code{\link[=qto_attributes]{qto_attributes()}} creates an attribute string used by \code{\link[=qto_div]{qto_div()}},

@@ -22,6 +22,10 @@ pass to \code{\link[htmltools:css]{htmltools::css()}}.}
 enclosed in curly brackets, e.g. "{}" if no attributes are supplied. If
 "span", an empty string is returned if no attributes are provided.}
     \item{\code{.drop_empty}}{If \code{TRUE}, empty attributes are dropped.}
+    \item{\code{call}}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
   }}
 
 \item{.attributes}{Optional list of attributes. If supplied, any attributes

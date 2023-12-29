@@ -24,6 +24,14 @@ pass to \code{\link[htmltools:css]{htmltools::css()}}.}
     \item{\code{.attributes}}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
   }}
+
+\item{allow_empty}{If \code{FALSE} (default), error if string is empty. If \code{TRUE},
+allow input to be an empty string.}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \description{
 Create a Markdown link
