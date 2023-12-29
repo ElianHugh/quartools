@@ -31,13 +31,10 @@
       qto_list
     Output
       [[1]]
-      foo
+      foo bar baz
       
       [[2]]
-      bar
-      
-      [[3]]
-      baz
+      a b c
       
 
 # pmap_qto works
