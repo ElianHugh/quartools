@@ -6,6 +6,7 @@
 #' @param text Text to wrap in span bracket.
 #' @inheritParams qto_attributes
 #' @inheritDotParams qto_attributes
+#' @family span
 #' @examples
 #'
 #' qto_span("This is *some text*", class = "class", key = "value")

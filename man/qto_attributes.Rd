@@ -11,7 +11,8 @@ qto_attributes(
   ...,
   .attributes = NULL,
   .output = "embrace",
-  .drop_empty = TRUE
+  .drop_empty = TRUE,
+  call = caller_env()
 )
 }
 \arguments{
@@ -29,10 +30,16 @@ pass to \code{\link[htmltools:css]{htmltools::css()}}.}
 \item{.attributes}{Optional list of attributes. If supplied, any attributes
 passed to \code{...} are ignored.}
 
-\item{.output}{Output type. If "embrace", the returned attributes are
-enclosed in curly brackets.}
+\item{.output}{Output type. If "embrace", the returned attributes are always
+enclosed in curly brackets, e.g. "{}" if no attributes are supplied. If
+"span", an empty string is returned if no attributes are provided.}
 
 \item{.drop_empty}{If \code{TRUE}, empty attributes are dropped.}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \description{
 \code{\link[=qto_attributes]{qto_attributes()}} creates an attribute string used by \code{\link[=qto_div]{qto_div()}},
