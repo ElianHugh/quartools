@@ -18,9 +18,14 @@ hash character is applied as a prefix.}
 period character is applied as a prefix.}
     \item{\code{css}}{If \code{{htmltools}} is installed, a list of css style attributes to
 pass to \code{\link[htmltools:css]{htmltools::css()}}.}
-    \item{\code{.output}}{Output type. If "embrace", the returned attributes are
-enclosed in curly brackets.}
+    \item{\code{.output}}{Output type. If "embrace", the returned attributes are always
+enclosed in curly brackets, e.g. "{}" if no attributes are supplied. If
+"span", an empty string is returned if no attributes are provided.}
     \item{\code{.drop_empty}}{If \code{TRUE}, empty attributes are dropped.}
+    \item{\code{call}}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
   }}
 
 \item{.attributes}{Optional list of attributes. If supplied, any attributes
@@ -37,3 +42,9 @@ qto_span("This is *some text*", class = "class", key = "value")
 qto_span("This is good", id = "id", class = "class", key1 = "val1", key2 = "val2")
 
 }
+\seealso{
+Other span: 
+\code{\link{qto_fig}()},
+\code{\link{qto_link}()}
+}
+\concept{span}
